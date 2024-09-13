@@ -6,7 +6,7 @@ import java.awt.event.*;;
 
 public class AdminPanel {
 
-	private JFrame frame;
+	private JFrame frame = new JFrame();
 
 	/**
 	 * Launch the application.
@@ -29,13 +29,13 @@ public class AdminPanel {
 	 */
 	public AdminPanel() {
 		initialize();
+		frame.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
 		frame.setBounds(0, 0, 1380, 780);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);

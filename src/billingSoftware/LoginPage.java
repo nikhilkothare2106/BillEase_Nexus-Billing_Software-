@@ -4,11 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -16,10 +18,11 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.MatteBorder;
 
 import userdefined.RoundedButton;
-
+import dbconnection.*;
+import admin.*;
 public class LoginPage {
 
-	private JFrame frame;
+	private JFrame frame = new JFrame();
 	private JTextField txtEnterName;
 	private JPasswordField pwdEnterPassword;
 	private JLabel lblNewLabel;
@@ -40,7 +43,6 @@ public class LoginPage {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
 		frame.setBounds(0, 0, 950, 650);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -83,13 +85,13 @@ public class LoginPage {
 		pwdEnterPassword.setBounds(28, 293, 298, 25);
 		panel.add(pwdEnterPassword);
 		
-		lblNewLabel = new JLabel("User Name");
+		lblNewLabel = new JLabel("Enter email");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Rockwell", Font.PLAIN, 14));
 		lblNewLabel.setBounds(28, 192, 79, 25);
 		panel.add(lblNewLabel);
 		
-		lblUserPassword = new JLabel("User Password");
+		lblUserPassword = new JLabel("Enter Password");
 		lblUserPassword.setForeground(new Color(255, 255, 255));
 		lblUserPassword.setFont(new Font("Rockwell", Font.PLAIN, 14));
 		lblUserPassword.setBounds(28, 268, 106, 25);
@@ -104,15 +106,14 @@ public class LoginPage {
 		btnNewButton = new RoundedButton("Register",20,Color.WHITE);
 		btnNewButton.setFocusPainted(false);
 		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(new Color(36,156,156));
+		btnNewButton.setBackground(new Color(255, 69, 0));
 		btnNewButton.setBounds(126, 371, 106, 36);
 		panel.add(btnNewButton);
 		
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				btnNewButton.setBackground(new Color(255,0,0));
-//				btnNewButton_1 = new RoundedButton("Register",30,Color.GREEN);
+				btnNewButton.setBackground(new Color(255, 99, 71));
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -125,7 +126,20 @@ public class LoginPage {
 			}
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				btnNewButton.setBackground(new Color(36, 156, 196));
+				btnNewButton.setBackground(new Color(255,69,0));
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String email = txtEnterName.getText();
+				String password = String.valueOf(pwdEnterPassword.getPassword());
+
+				boolean login_status = DbOperations.login(email, password);
+				if(login_status){
+					new AdminPanel();
+				}else{
+					JOptionPane.showMessageDialog(frame, "Email id and password didnt matched", "Login Error", JOptionPane.ERROR_MESSAGE);
+				}
+
 			}
 		});
 		

@@ -17,7 +17,7 @@ public class StartPage {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		new StartPage();
+		SwingUtilities.invokeLater(() -> new StartPage());
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class StartPage {
 			progressBar.setValue(i);
 			if(i == 100){
 				timer.stop();
-				new LoginPage();
+				SwingUtilities.invokeLater(() -> new LoginPage());
 				frame.setVisible(false);
 			}
 			if(i == 10) {

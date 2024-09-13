@@ -2,6 +2,8 @@ package billingSoftware;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -10,7 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.border.MatteBorder;
+
+import userdefined.RoundedButton;
 
 public class LoginPage {
 
@@ -20,16 +25,16 @@ public class LoginPage {
 	private JLabel lblNewLabel;
 	private JLabel lblUserPassword;
 	private JLabel lblNewLabel_1;
+	JButton btnNewButton;
 
 
 	public LoginPage() {
 		initialize();
-		frame.setResizable(false);
 		frame.setVisible(true);
 		
 	}
 	public static void main(String[] args) {
-		new LoginPage();
+		SwingUtilities.invokeLater(() -> new LoginPage());
 	}
 	/**
 	 * Initialize the contents of the frame.
@@ -39,7 +44,20 @@ public class LoginPage {
 		frame.setBounds(0, 0, 950, 650);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);		
+		
+		JLabel lblNewLabel_3_1_1 = new JLabel("Nexus");
+		lblNewLabel_3_1_1.setForeground(new Color(255, 255, 224));
+		lblNewLabel_3_1_1.setFont(new Font("Cooper Black", Font.BOLD, 54));
+		lblNewLabel_3_1_1.setBounds(154, 122, 225, 67);
+		frame.getContentPane().add(lblNewLabel_3_1_1);
+		
+		JLabel lblNewLabel_3_2 = new JLabel("BillEase");
+		lblNewLabel_3_2.setForeground(new Color(255, 255, 224));
+		lblNewLabel_3_2.setFont(new Font("Cooper Black", Font.BOLD, 54));
+		lblNewLabel_3_2.setBounds(134, 61, 259, 67);
+		frame.getContentPane().add(lblNewLabel_3_2);
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(523, 31, 364, 548);
@@ -83,34 +101,42 @@ public class LoginPage {
 		lblNewLabel_5.setBounds(102, 73, 158, 63);
 		panel.add(lblNewLabel_5);
 		
-		JButton btnNewButton = new JButton("Login");
-		btnNewButton.setBorder(null);
+		btnNewButton = new RoundedButton("Register",20,Color.WHITE);
 		btnNewButton.setFocusPainted(false);
 		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(new Color(45, 200, 200));
+		btnNewButton.setBackground(new Color(36,156,156));
 		btnNewButton.setBounds(126, 371, 106, 36);
 		panel.add(btnNewButton);
+		
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				btnNewButton.setBackground(new Color(255,0,0));
+//				btnNewButton_1 = new RoundedButton("Register",30,Color.GREEN);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnNewButton.setFont(new Font("Rockwell", Font.BOLD, 15));
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnNewButton.setFont(new Font("Rockwell", Font.BOLD, 14));
+			}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				btnNewButton.setBackground(new Color(36, 156, 196));
+			}
+		});
 		
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\Untitled3.png"));
 		lblNewLabel_2.setBounds(0, 0, 381, 548);
 		panel.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Billing");
-		lblNewLabel_3.setFont(new Font("Cooper Black", Font.BOLD, 54));
-		lblNewLabel_3.setForeground(new Color(255, 255, 224));
-		lblNewLabel_3.setBounds(179, 61, 259, 67);
-		frame.getContentPane().add(lblNewLabel_3);
-		
-		JLabel lblNewLabel_3_1 = new JLabel("Software");
-		lblNewLabel_3_1.setForeground(new Color(255, 255, 224));
-		lblNewLabel_3_1.setFont(new Font("Cooper Black", Font.BOLD, 54));
-		lblNewLabel_3_1.setBounds(143, 122, 295, 67);
-		frame.getContentPane().add(lblNewLabel_3_1);
-		
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\imageedit_7_8214613300.png"));
-		lblNewLabel_4.setBounds(84, 200, 364, 379);
+		lblNewLabel_4.setBounds(75, 200, 364, 379);
 		frame.getContentPane().add(lblNewLabel_4);
 		
 		lblNewLabel_1 = new JLabel("Billing Software");

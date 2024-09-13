@@ -17,16 +17,7 @@ public class StartPage {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					StartPage window = new StartPage();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		new StartPage();
 	}
 
 	/**
@@ -34,6 +25,7 @@ public class StartPage {
 	 */
 	public StartPage() {
 		initialize();
+		frame.setVisible(true);
 	}
 	
 	int i = 1;
@@ -60,6 +52,7 @@ public class StartPage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
@@ -104,5 +97,7 @@ public class StartPage {
 		lblNewLabel.setBounds(0, 0, 696, 414);
 		frame.getContentPane().add(lblNewLabel);
 		frame.setLocationRelativeTo(null);	
+		
+		
 	}
 }

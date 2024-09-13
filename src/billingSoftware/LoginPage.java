@@ -1,8 +1,16 @@
 package billingSoftware;
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.border.*;
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.MatteBorder;
 
 public class LoginPage {
 
@@ -13,20 +21,16 @@ public class LoginPage {
 	private JLabel lblUserPassword;
 	private JLabel lblNewLabel_1;
 
-	/**
-	 * Launch the application.
-	 */
-	
 
-	/**
-	 * Create the application.
-	 */
 	public LoginPage() {
 		initialize();
 		frame.setResizable(false);
 		frame.setVisible(true);
+		
 	}
-
+	public static void main(String[] args) {
+		new LoginPage();
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -115,5 +119,6 @@ public class LoginPage {
 		lblNewLabel_1.setBackground(new Color(255, 255, 255));
 		lblNewLabel_1.setBounds(0, 0, 944, 611);
 		frame.getContentPane().add(lblNewLabel_1);
+		
 	}
 }

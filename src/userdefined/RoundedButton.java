@@ -14,7 +14,7 @@ public class RoundedButton extends JButton {
     public RoundedButton(String text, int radius, Color color) {
         super(text);
         this.color = color;
-        this.border = new RoundedBorder(radius);  // Set the custom border
+        this.border = new RoundedBorderAll(radius);  // Set the custom border
         setBorder(border);
         setContentAreaFilled(false);  // Disable default background filling
     }
@@ -24,7 +24,7 @@ public class RoundedButton extends JButton {
     	g.setColor(getBackground());
 
         // Fill the rounded area with background color
-        g.fillRoundRect(0, 0, getWidth(), getHeight(), ((RoundedBorder) border).getRadius(), ((RoundedBorder) border).getRadius());
+        g.fillRoundRect(0, 0, getWidth(), getHeight(), ((RoundedBorderAll) border).getRadius(), ((RoundedBorderAll) border).getRadius());
         g.setColor(color);
 
         // Paint the text and rest of the component

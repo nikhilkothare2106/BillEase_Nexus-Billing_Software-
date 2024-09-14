@@ -17,9 +17,11 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.border.MatteBorder;
 
-import userdefined.RoundedButton;
+import userdefined.*;
 import dbconnection.*;
 import admin.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 public class LoginPage {
 
 	private JFrame frame = new JFrame();
@@ -28,7 +30,7 @@ public class LoginPage {
 	private JLabel lblNewLabel;
 	private JLabel lblUserPassword;
 	private JLabel lblNewLabel_1;
-	JButton btnNewButton;
+	private JButton btnNewButton;
 
 
 	public LoginPage() {
@@ -67,6 +69,11 @@ public class LoginPage {
 		panel.setLayout(null);
 		
 		txtEnterName = new JTextField();
+		txtEnterName.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pwdEnterPassword.requestFocus();
+			}
+		});
 		txtEnterName.setCaretColor(new Color(255, 255, 255));
 		txtEnterName.setForeground(new Color(255, 255, 255));
 	
@@ -78,6 +85,11 @@ public class LoginPage {
 		txtEnterName.setColumns(10);
 		
 		pwdEnterPassword = new JPasswordField();
+		pwdEnterPassword.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnNewButton.doClick();
+			}
+		});
 		pwdEnterPassword.setCaretColor(new Color(255, 255, 255));
 		pwdEnterPassword.setForeground(new Color(255, 255, 255));
 		pwdEnterPassword.setBackground(new Color(15, 164, 149));
@@ -103,10 +115,27 @@ public class LoginPage {
 		lblNewLabel_5.setBounds(102, 73, 158, 63);
 		panel.add(lblNewLabel_5);
 		
-		btnNewButton = new RoundedButton("Register",20,Color.WHITE);
+		btnNewButton = new RoundedButton("Log in",20, Color.WHITE);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String email = txtEnterName.getText();
+				String password = String.valueOf(pwdEnterPassword.getPassword());
+
+				boolean login_status = DbOperations.login(email, password);
+				if(login_status){
+					new AdminPanel();
+				}else{
+					JOptionPane.showMessageDialog(frame, "Email id and password didnt matched", "Login Error", JOptionPane.ERROR_MESSAGE);
+					txtEnterName.setText("");
+					pwdEnterPassword.setText("");
+					
+				}
+			}
+		});
+		btnNewButton.setFont(new Font("Rockwell", Font.BOLD, 14));
 		btnNewButton.setFocusPainted(false);
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(new Color(255, 69, 0));
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setBackground(new Color(255,69,0));
 		btnNewButton.setBounds(126, 371, 106, 36);
 		panel.add(btnNewButton);
 		
@@ -127,19 +156,6 @@ public class LoginPage {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				btnNewButton.setBackground(new Color(255,69,0));
-			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				String email = txtEnterName.getText();
-				String password = String.valueOf(pwdEnterPassword.getPassword());
-
-				boolean login_status = DbOperations.login(email, password);
-				if(login_status){
-					new AdminPanel();
-				}else{
-					JOptionPane.showMessageDialog(frame, "Email id and password didnt matched", "Login Error", JOptionPane.ERROR_MESSAGE);
-				}
-
 			}
 		});
 		

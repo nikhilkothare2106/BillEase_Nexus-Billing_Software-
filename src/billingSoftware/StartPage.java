@@ -65,6 +65,7 @@ public class StartPage {
 		frame.getContentPane().setLayout(null);
 		
 		lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setFont(new Font("Rockwell", Font.PLAIN, 14));
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setBounds(10, 332, 192, 26);
 		frame.getContentPane().add(lblNewLabel_2);

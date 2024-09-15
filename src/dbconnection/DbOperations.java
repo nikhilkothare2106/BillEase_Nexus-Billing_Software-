@@ -171,4 +171,33 @@ public class DbOperations {
         }
         return status;
     }
+
+    public static ResultSet showItemData(){
+        ResultSet rs = null;
+        try{
+            Connection connection = DbConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("select * from items;");
+
+            rs = statement.executeQuery();
+        }
+        catch(Exception e){
+            e.getStackTrace();
+        }
+        return rs;
+    }
+
+    public static ResultSet getItemData(String id){
+        ResultSet rs = null;
+        try{
+            Connection connection = DbConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("select * from items where id=?");
+            statement.setString(1, id);
+
+            rs = statement.executeQuery();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return rs;
+    }
 }

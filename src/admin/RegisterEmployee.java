@@ -9,6 +9,7 @@ import validation.RegValidation;
 
 import javax.swing.border.MatteBorder;
 
+import billingSoftware.LoginPage;
 import dbconnection.DbOperations;
 import gettersetter.GetSetEmployee;
 
@@ -23,9 +24,6 @@ public class RegisterEmployee {
 	private RoundedButton btn_register;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -39,17 +37,12 @@ public class RegisterEmployee {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
+
 	public RegisterEmployee() {
 		initialize();
 		frame.setVisible(true);
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame.setBounds(0, 0, 1380, 780);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,6 +57,13 @@ public class RegisterEmployee {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel_9 = new JLabel("  Log out");
+		lblNewLabel_9.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new LoginPage();
+				frame.setVisible(false);
+			}
+		});
 		lblNewLabel_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel_9.setForeground(new Color(240, 0, 0));
 		lblNewLabel_9.setFont(new Font("Rockwell", Font.BOLD, 22));
@@ -166,6 +166,12 @@ public class RegisterEmployee {
 		panel_4.add(lblNewLabel_8_1);
 		
 		JLabel lblNewLabel_8_4 = new JLabel("New label");
+		lblNewLabel_8_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new ChangePassword();
+				frame.setVisible(false);			}
+		});
 		lblNewLabel_8_4.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\Untitled.png"));
 		lblNewLabel_8_4.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblNewLabel_8_4.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -216,7 +222,7 @@ public class RegisterEmployee {
 		
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setBounds(0, 0, 228, 741);
-		lblNewLabel_2.setBorder(new MatteBorder(1, 1, 1, 2, (Color) new Color(0, 0, 0)));
+		lblNewLabel_2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		lblNewLabel_2.setIcon(new ImageIcon(AdminPanel.class.getResource("/images/Untitled.png")));
 		panel_1.add(lblNewLabel_2);
 		
@@ -443,7 +449,7 @@ public class RegisterEmployee {
 		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\Untitled.png"));
 		lblNewLabel_4.setBounds(0, 0, 228, 101);
 		panel_3.add(lblNewLabel_4);
-		lblNewLabel_4.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
+		lblNewLabel_4.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
 		lblNewLabel_4.setForeground(new Color(255, 255, 255));
 		lblNewLabel_4.setBackground(new Color(255, 255, 255));
 		;

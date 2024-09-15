@@ -216,6 +216,13 @@ public class ViewEditEmployee {
 		panel_4.add(lblNewLabel_8_1);
 		
 		JLabel lblNewLabel_8_4 = new JLabel("New label");
+		lblNewLabel_8_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new ChangePassword();
+				frame.setVisible(false);
+			}
+		});
 		lblNewLabel_8_4.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\Untitled.png"));
 		lblNewLabel_8_4.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblNewLabel_8_4.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -265,7 +272,7 @@ public class ViewEditEmployee {
 		
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setBounds(0, 0, 228, 741);
+		lblNewLabel_2.setBounds(0, 0, 228, 650);
 		lblNewLabel_2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		lblNewLabel_2.setIcon(new ImageIcon(ViewEditEmployee.class.getResource("/images/Untitled.png")));
 		panel_1.add(lblNewLabel_2);
@@ -407,6 +414,11 @@ public class ViewEditEmployee {
 			
 		};
 		model = new DefaultTableModel(data, cols){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
             public boolean isCellEditable(int row, int column) {
                 return false;

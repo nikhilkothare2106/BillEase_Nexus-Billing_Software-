@@ -148,4 +148,27 @@ public class DbOperations {
         }
         return status;
     }
+
+    public static boolean addItem(GetSetItem item){
+        boolean status = false;
+        try{
+            Connection connection = DbConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("insert into items values(?,?,?,?,?)");
+            
+            statement.setString(1, item.getId());
+            statement.setString(2, item.getName());
+            statement.setString(3, item.getPrice());
+            statement.setString(4, item.getQuantity());
+            statement.setString(5, item.getCategory());
+
+            int i = statement.executeUpdate();
+            if(i > 0){
+                status = true;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();;
+        }
+        return status;
+    }
 }

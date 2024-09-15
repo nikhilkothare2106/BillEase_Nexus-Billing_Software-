@@ -3,33 +3,33 @@ package admin;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.sql.ResultSet;
-
 import javax.swing.border.LineBorder;
 import userdefined.*;
-import validation.RegValidation;
+import validation.ItemValidation;
 
 import javax.swing.border.MatteBorder;
 
 import billingSoftware.LoginPage;
 import dbconnection.DbOperations;
+import gettersetter.GetSetItem;
 
-public class ChangePassword {
+public class AddItems {
 
 	private JFrame frame = new JFrame();
-	private JPasswordField confirmpwd;
-	private RoundedButton btn_change;
-	private JPasswordField newpwd;
-	private JPasswordField oldpwd;
+	private JTextField nametext;
+	private JTextField idtext;
+	private RoundedButton btn_register;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JTextField pricetext;
+	private JTextField quantitytext;
+	private String otherselected = "";
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ChangePassword window = new ChangePassword();
+					AddItems window = new AddItems();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class ChangePassword {
 	/**
 	 * Create the application.
 	 */
-	public ChangePassword() {
+	public AddItems() {
 		initialize();
 		frame.setVisible(true);
 	}
@@ -49,6 +49,7 @@ public class ChangePassword {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
 		frame.setBounds(0, 0, 1380, 780);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -132,7 +133,7 @@ public class ChangePassword {
 		panel_4.add(lblNewLabel_5_1_1_1);
 		
 		JLabel lblNewLabel_5_1_1_2_1 = new JLabel("");
-		lblNewLabel_5_1_1_2_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\ChangePassword.png"));
+		lblNewLabel_5_1_1_2_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\changepassword.png"));
 		lblNewLabel_5_1_1_2_1.setBounds(6, 358, 57, 57);
 		lblNewLabel_5_1_1_2_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_5_1_1_2_1);
@@ -172,6 +173,12 @@ public class ChangePassword {
 		panel_4.add(lblNewLabel_8_1);
 		
 		JLabel lblNewLabel_8_4 = new JLabel("New label");
+		lblNewLabel_8_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new ChangePassword();
+				frame.setVisible(false);			}
+		});
 		lblNewLabel_8_4.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\Untitled.png"));
 		lblNewLabel_8_4.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblNewLabel_8_4.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -222,7 +229,7 @@ public class ChangePassword {
 		
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setBounds(0, 0, 228, 741);
-		lblNewLabel_2.setBorder(new MatteBorder(1, 1, 1, 2, (Color) new Color(0, 0, 0)));
+		lblNewLabel_2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		lblNewLabel_2.setIcon(new ImageIcon(AdminPanel.class.getResource("/images/Untitled.png")));
 		panel_1.add(lblNewLabel_2);
 		
@@ -254,114 +261,172 @@ public class ChangePassword {
 		panel_5.setBounds(623, 42, 346, 516);
 		panel_2.add(panel_5);
 		
-		oldpwd = new JPasswordField();
-		oldpwd.setForeground(Color.WHITE);
-		oldpwd.setCaretColor(Color.WHITE);
-		oldpwd.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
-		oldpwd.setBackground(new Color(15, 164, 149));
-		oldpwd.setBounds(23, 144, 298, 25);
-		panel_5.add(oldpwd);
-		
-		newpwd = new JPasswordField();
-		newpwd.setForeground(Color.WHITE);
-		newpwd.setCaretColor(Color.WHITE);
-		newpwd.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
-		newpwd.setBackground(new Color(15, 164, 149));
-		newpwd.setBounds(23, 207, 298, 25);
-		panel_5.add(newpwd);
-		
-		JLabel newpwdtext = new JLabel("New Password");
-		newpwdtext.setForeground(Color.WHITE);
-		newpwdtext.setFont(new Font("Rockwell", Font.BOLD, 14));
-		newpwdtext.setBounds(23, 186, 214, 25);
-		panel_5.add(newpwdtext);
-		
-		btn_change = new RoundedButton("Register", 20, Color.WHITE);
-		btn_change.addActionListener(new ActionListener() {
+		JComboBox comboBox = new JComboBox();
+		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String oldpassword = new String(oldpwd.getPassword());
-				ResultSet rs = DbOperations.getAdminPassword();
-				if(rs != null){
-					try{
-						rs.next();
-						if(!oldpassword.equals(rs.getString("Password"))){
-							JOptionPane.showMessageDialog(frame, "Incorrect Password", "Password error", JOptionPane.ERROR_MESSAGE);
-						}else{
-							String newpassword = new String(newpwd.getPassword());
-							String confirmpassword = new String(confirmpwd.getPassword());
-							
-							if(newpassword.equals("")){
-								JOptionPane.showMessageDialog(frame, "Enter password", "Password error", JOptionPane.ERROR_MESSAGE);
-							}
-							else if(!newpassword.equals(confirmpassword)){
-								JOptionPane.showMessageDialog(frame, "Password not matched!", "Password error", JOptionPane.ERROR_MESSAGE);
-							}else{
-								boolean valid = new RegValidation().passwordValidation(newpassword);
-								if(!valid){
-									JOptionPane.showMessageDialog(frame, "Invalid password", "Password error", JOptionPane.ERROR_MESSAGE);
-								}else{
-									changePwd(newpassword);
-								}
-							}
-						}
-					}
-					catch(Exception e1){
-						e1.printStackTrace();;
-					}
-				}
-			}
-
-			private void changePwd(String newpassord) {
-				boolean status = DbOperations.changeAdminPassword(newpassord);
-				if(status){
-					JOptionPane.showMessageDialog(frame, "Password Changes Successfully!");
-					oldpwd.setText("");
-					newpwd.setText("");
-					confirmpwd.setText("");
-
-				}else{
-					JOptionPane.showMessageDialog(frame, 
-					"Some error occurred", "Password error", JOptionPane.ERROR_MESSAGE);
+				String selecteditem = (String) comboBox.getSelectedItem();
+				if(selecteditem.equals("Other")){
+					otherselected = JOptionPane.showInputDialog(panel_5, "Enter category");
 				}
 			}
 		});
-		btn_change.setText("Change");
-		btn_change.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btn_change.setForeground(Color.WHITE);
-		btn_change.setFont(new Font("Rockwell", Font.BOLD, 14));
-		btn_change.setFocusPainted(false);
-		btn_change.setBackground(new Color(255, 69, 0));
-		btn_change.setBounds(107, 335, 130, 40);
-		panel_5.add(btn_change);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Select Category", "Electronics", "Clothing", "Groceries", "Toys", "Health and Beauty", "Home and Kitchen", "Books and Stationery", "Other"}));
+		comboBox.setBounds(25, 384, 160, 25);
+		panel_5.add(comboBox);
 		
-		confirmpwd = new JPasswordField();
-		confirmpwd.setForeground(Color.WHITE);
-		confirmpwd.setCaretColor(Color.WHITE);
-		confirmpwd.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
-		confirmpwd.setBackground(new Color(15, 164, 149));
-		confirmpwd.setBounds(23, 276, 298, 25);
-		panel_5.add(confirmpwd);
+		quantitytext = new JTextField();
+		quantitytext.setForeground(Color.WHITE);
+		quantitytext.setFont(new Font("Serif", Font.BOLD, 14));
+		quantitytext.setColumns(10);
+		quantitytext.setCaretColor(Color.WHITE);
+		quantitytext.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
+		quantitytext.setBackground(new Color(15, 164, 149));
+		quantitytext.setBounds(25, 314, 298, 25);
+		panel_5.add(quantitytext);
 		
-		JLabel oldpwdtext = new JLabel("Old Password");
-		oldpwdtext.setForeground(Color.WHITE);
-		oldpwdtext.setFont(new Font("Rockwell", Font.BOLD, 14));
-		oldpwdtext.setBounds(23, 120, 214, 25);
-		panel_5.add(oldpwdtext);
+		pricetext = new JTextField();
+		pricetext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				quantitytext.requestFocus();
+			}
+		});
+		pricetext.setForeground(Color.WHITE);
+		pricetext.setFont(new Font("Serif", Font.BOLD, 14));
+		pricetext.setColumns(10);
+		pricetext.setCaretColor(Color.WHITE);
+		pricetext.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
+		pricetext.setBackground(new Color(15, 164, 149));
+		pricetext.setBounds(25, 246, 298, 25);
+		panel_5.add(pricetext);
 		
-		JLabel confirmpwdtext = new JLabel("Confirm New Password");
-		confirmpwdtext.setForeground(Color.WHITE);
-		confirmpwdtext.setFont(new Font("Rockwell", Font.BOLD, 14));
-		confirmpwdtext.setBounds(23, 255, 214, 25);
-		panel_5.add(confirmpwdtext);
+		JLabel namelabel = new JLabel("Item Name");
+		namelabel.setForeground(Color.WHITE);
+		namelabel.setFont(new Font("Rockwell", Font.BOLD, 14));
+		namelabel.setBounds(27, 158, 214, 25);
+		panel_5.add(namelabel);
 		
-		JLabel lblNewLabel_5_2 = new JLabel("Change Password");
-		lblNewLabel_5_2.setForeground(Color.WHITE);
-		lblNewLabel_5_2.setFont(new Font("Rockwell", Font.BOLD, 26));
-		lblNewLabel_5_2.setBounds(49, 21, 256, 63);
-		panel_5.add(lblNewLabel_5_2);
+		nametext = new JTextField();
+		nametext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pricetext.requestFocus();
+			}
+		});
+		nametext.setForeground(Color.WHITE);
+		nametext.setFont(new Font("Serif", Font.BOLD, 14));
+		nametext.setColumns(10);
+		nametext.setCaretColor(Color.WHITE);
+		nametext.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
+		nametext.setBackground(new Color(15, 164, 149));
+		nametext.setBounds(25, 179, 298, 25);
+		panel_5.add(nametext);
+		
+		btn_register = new RoundedButton("Register", 20, Color.WHITE);
+		btn_register.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String id = idtext.getText();
+				String name = nametext.getText();
+				String price = pricetext.getText();
+				String quantity = quantitytext.getText();
+				String category = (String)comboBox.getSelectedItem();
+
+				ItemValidation validate = new ItemValidation();
+
+				if(!validate.idValidation(id)){
+					JOptionPane.showMessageDialog(frame, "Invalid id", "Id error", JOptionPane.ERROR_MESSAGE);
+				}
+				else if(!validate.nameValidation(name)){
+					JOptionPane.showMessageDialog(frame, "Invalid name", "Name error", JOptionPane.ERROR_MESSAGE);
+				}
+				else if(!validate.priceValidation(price)){
+					JOptionPane.showMessageDialog(frame, "Invalid price", "Price error", JOptionPane.ERROR_MESSAGE);
+				}
+				else if(!validate.quantityValidation(quantity)){
+					JOptionPane.showMessageDialog(frame, "Invalid quantity", "Quantity error", JOptionPane.ERROR_MESSAGE);
+				}else{
+					if(category.equals("Select Category")){
+						category = "";
+					}else if(category.equals("Other")){
+						category = otherselected;
+					}
+
+					GetSetItem item = new GetSetItem();
+					item.setId(id);
+					item.setName(name);
+					item.setPrice(price);
+					item.setQuantity(quantity);
+					item.setCategory(category);
+
+					boolean status = DbOperations.addItem(item);
+					if(status){
+						JOptionPane.showMessageDialog(frame, "Item added Sucessfully");
+						idtext.setText("");
+						nametext.setText("");
+						pricetext.setText("");
+						quantitytext.setText("");
+						comboBox.setSelectedIndex(0);
+					}
+					else{
+						JOptionPane.showMessageDialog(frame, "Error occurred", "Add item error", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			}
+		});
+		btn_register.setText("Add");
+		btn_register.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_register.setForeground(Color.WHITE);
+		btn_register.setFont(new Font("Rockwell", Font.BOLD, 14));
+		btn_register.setFocusPainted(false);
+		btn_register.setBackground(new Color(255, 69, 0));
+		btn_register.setBounds(118, 449, 113, 40);
+		panel_5.add(btn_register);
+		
+		JLabel categorylable = new JLabel("Item Category");
+		categorylable.setForeground(Color.WHITE);
+		categorylable.setFont(new Font("Rockwell", Font.BOLD, 14));
+		categorylable.setBounds(25, 355, 214, 25);
+		panel_5.add(categorylable);
+		
+		JLabel quantitylable = new JLabel("Item Quantity");
+		quantitylable.setForeground(Color.WHITE);
+		quantitylable.setFont(new Font("Rockwell", Font.BOLD, 14));
+		quantitylable.setBounds(25, 290, 214, 25);
+		panel_5.add(quantitylable);
+		
+		idtext = new JTextField();
+		idtext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nametext.requestFocus();
+			}
+		});
+		idtext.setForeground(Color.WHITE);
+		idtext.setFont(new Font("Serif", Font.BOLD, 14));
+		idtext.setColumns(10);
+		idtext.setCaretColor(Color.WHITE);
+		idtext.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
+		idtext.setBackground(new Color(15, 164, 149));
+		idtext.setBounds(25, 117, 298, 25);
+		panel_5.add(idtext);
+		
+		JLabel idlabel = new JLabel("Item ID");
+		idlabel.setForeground(Color.WHITE);
+		idlabel.setFont(new Font("Rockwell", Font.BOLD, 14));
+		idlabel.setBounds(25, 95, 214, 25);
+		panel_5.add(idlabel);
+		
+		JLabel pricelable = new JLabel("Item Price");
+		pricelable.setForeground(Color.WHITE);
+		pricelable.setFont(new Font("Rockwell", Font.BOLD, 14));
+		pricelable.setBounds(25, 223, 214, 25);
+		panel_5.add(pricelable);
+		
+		JLabel labletext = new JLabel("Add Item");
+		labletext.setForeground(Color.WHITE);
+		labletext.setFont(new Font("Rockwell", Font.BOLD, 26));
+		labletext.setBounds(100, 21, 122, 63);
+		panel_5.add(labletext);
 		
 		JLabel lblNewLabel_2_1 = new JLabel();
-		lblNewLabel_2_1.setIcon(new ImageIcon(ChangePassword.class.getResource("/images/Untitled3.png")));
+		lblNewLabel_2_1.setIcon(new ImageIcon(AddItems.class.getResource("/images/Untitled3.png")));
 		lblNewLabel_2_1.setBounds(0, 0, 355, 516);
 		panel_5.add(lblNewLabel_2_1);
 		
@@ -392,7 +457,7 @@ public class ChangePassword {
 		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\Untitled.png"));
 		lblNewLabel_4.setBounds(0, 0, 228, 101);
 		panel_3.add(lblNewLabel_4);
-		lblNewLabel_4.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
+		lblNewLabel_4.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
 		lblNewLabel_4.setForeground(new Color(255, 255, 255));
 		lblNewLabel_4.setBackground(new Color(255, 255, 255));
 		;

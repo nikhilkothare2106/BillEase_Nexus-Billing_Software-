@@ -8,14 +8,9 @@ import userdefined.*;
 import validation.RegValidation;
 
 import javax.swing.border.MatteBorder;
-import javax.swing.border.SoftBevelBorder;
 
 import dbconnection.DbOperations;
 import gettersetter.GetSetEmployee;
-
-import javax.swing.border.BevelBorder;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.EmptyBorder;
 
 public class RegisterEmployee {
 
@@ -89,7 +84,7 @@ public class RegisterEmployee {
 		panel.add(lblNewLabel);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 102, 228, 638);
+		panel_1.setBounds(0, 101, 228, 638);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -158,6 +153,12 @@ public class RegisterEmployee {
 		panel_4.add(lblNewLabel_8_3);
 		
 		JLabel lblNewLabel_8_1 = new JLabel("New label");
+		lblNewLabel_8_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new ViewEditEmployee();
+				frame.setVisible(false);	}
+		});
 		lblNewLabel_8_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\Untitled.png"));
 		lblNewLabel_8_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblNewLabel_8_1.setCursor(new Cursor(Cursor.HAND_CURSOR));

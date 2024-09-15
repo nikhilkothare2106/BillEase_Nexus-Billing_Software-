@@ -4,12 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.border.LineBorder;
-import userdefined.*;
 import javax.swing.border.MatteBorder;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.EmptyBorder;
 
 public class AdminPanel {
 
@@ -76,7 +71,7 @@ public class AdminPanel {
 		panel.add(lblNewLabel);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 102, 228, 638);
+		panel_1.setBounds(0, 101, 228, 638);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -145,6 +140,13 @@ public class AdminPanel {
 		panel_4.add(lblNewLabel_8_3);
 		
 		JLabel lblNewLabel_8_1 = new JLabel("New label");
+		lblNewLabel_8_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new ViewEditEmployee();
+				frame.setVisible(false);
+			}
+		});
 		lblNewLabel_8_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\Untitled.png"));
 		lblNewLabel_8_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblNewLabel_8_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -236,7 +238,7 @@ public class AdminPanel {
 		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\Untitled.png"));
 		lblNewLabel_4.setBounds(0, 0, 228, 101);
 		panel_3.add(lblNewLabel_4);
-		lblNewLabel_4.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
+		lblNewLabel_4.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
 		lblNewLabel_4.setForeground(new Color(255, 255, 255));
 		lblNewLabel_4.setBackground(new Color(255, 255, 255));
 		;

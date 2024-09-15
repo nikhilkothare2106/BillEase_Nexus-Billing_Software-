@@ -62,6 +62,13 @@ public class ViewEditEmployee {
 					row = new Object[]{sr,name,email,gender,phone};
 					sr++;
 					model.addRow(row);
+					DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+			        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+			        // Set the renderer for each column
+			        for (int i = 0; i < table.getColumnCount(); i++) {
+			            table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+			        }
 				}
 				sr = 0;
 				setTableHeight();
@@ -87,8 +94,9 @@ public class ViewEditEmployee {
 		table.setPreferredSize(new Dimension(table.getPreferredSize().width, tableHeight));
 		table.setBounds(rc.x, rc.y, rc.width, tableHeight);
 		table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 20));
+		Rectangle rc1 = scrollPane.getBounds();
 		if(scrollPane.getBounds().height < 476){
-			scrollPane.setBounds(149, 108, 522, tableHeight + 30);
+			scrollPane.setBounds(rc1.x, rc1.y, rc1.width, tableHeight + 30);
 		}
 	}
 	private void initialize() {
@@ -267,7 +275,45 @@ public class ViewEditEmployee {
 		frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
+		RoundedButton btn_register = new RoundedButton("Register", 20, Color.WHITE);
+		btn_register.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_register.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String email = textField_1.getText();
+				if(!email.equals("")){
+					String name = textField.getText();;
+					String pwd = new String(passwordField.getPassword());
+					String phone = textField_2.getText();
+					String gender = "";
+					if(rdbtnNewRadioButton.isSelected()){
+						gender = "M";
+					}else{
+						gender = "F";
+					}
+					GetSetEmployee employee = new GetSetEmployee();
+					employee.setEmail(email);
+					employee.setGender(gender);
+					employee.setName(name);
+					employee.setPassword(pwd);
+					employee.setPhoneno(phone);
+
+					boolean status = DbOperations.updateEmployeeData(employee);
+					
+					if(status){
+						JOptionPane.showMessageDialog(frame, "Employee data Updated Successfully!");
+						getEmployeeDetails();
+						clearForm();
+					}else{
+						JOptionPane.showMessageDialog(frame, "Error occurred!", "Update error", JOptionPane.ERROR_MESSAGE);
+					}
+				}else{
+					JOptionPane.showMessageDialog(frame, "Employee not selected!", "Invalid data", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		
 		RoundedButton btn_register_1 = new RoundedButton("Register", 20, Color.WHITE);
+		btn_register_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_register_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String email = textField_1.getText();
@@ -286,20 +332,75 @@ public class ViewEditEmployee {
 				}
 			}
 		});
+		textField_2 = new JTextField();
+		textField_2.setForeground(Color.WHITE);
+		textField_2.setFont(new Font("Serif", Font.BOLD, 14));
+		textField_2.setColumns(10);
+		textField_2.setCaretColor(Color.WHITE);
+		textField_2.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
+		textField_2.setBackground(new Color(15, 164, 149));
+		textField_2.setBounds(690, 413, 298, 25);
+		panel_2.add(textField_2);
+		
+		textField_1 = new JTextField();
+		textField_1.setEnabled(false);
+		textField_1.setForeground(Color.WHITE);
+		textField_1.setFont(new Font("Serif", Font.BOLD, 14));
+		textField_1.setColumns(10);
+		textField_1.setCaretColor(Color.WHITE);
+		textField_1.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
+		textField_1.setBackground(new Color(15, 164, 149));
+		textField_1.setBounds(690, 215, 298, 25);
+		panel_2.add(textField_1);
+		
+		rdbtnNewRadioButton = new JRadioButton("Male");
+		buttonGroup.add(rdbtnNewRadioButton);
+		rdbtnNewRadioButton.setFont(new Font("Rockwell", Font.BOLD, 12));
+		rdbtnNewRadioButton.setFocusPainted(false);
+		rdbtnNewRadioButton.setBackground(new Color(15, 164, 149));
+		rdbtnNewRadioButton.setBounds(690, 362, 73, 23);
+		panel_2.add(rdbtnNewRadioButton);
+		
+		JLabel lblNewLabel_6_1 = new JLabel("Employee's email");
+		lblNewLabel_6_1.setForeground(Color.WHITE);
+		lblNewLabel_6_1.setFont(new Font("Rockwell", Font.BOLD, 14));
+		lblNewLabel_6_1.setBounds(690, 193, 214, 25);
+		panel_2.add(lblNewLabel_6_1);
 		btn_register_1.setText("Delete");
 		btn_register_1.setForeground(Color.WHITE);
 		btn_register_1.setFont(new Font("Rockwell", Font.BOLD, 14));
 		btn_register_1.setFocusPainted(false);
 		btn_register_1.setBackground(new Color(255, 69, 0));
-		btn_register_1.setBounds(769, 484, 123, 40);
+		btn_register_1.setBounds(689, 471, 123, 40);
 		panel_2.add(btn_register_1);
 		
-		scrollPane = new JScrollPane();
-		scrollPane.setViewportBorder(null);
-		scrollPane.setBorder(new LineBorder(new Color(0, 0, 0)));
-		scrollPane.setBackground(new Color(0, 0, 0));
-		scrollPane.setBounds(149, 108, 522, 31);
-		panel_2.add(scrollPane);
+		passwordField = new JPasswordField();
+		passwordField.setForeground(Color.WHITE);
+		passwordField.setCaretColor(Color.WHITE);
+		passwordField.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
+		passwordField.setBackground(new Color(15, 164, 149));
+		passwordField.setBounds(690, 283, 298, 25);
+		panel_2.add(passwordField);
+		
+		rdbtnFemale = new JRadioButton("Female");
+		buttonGroup.add(rdbtnFemale);
+		rdbtnFemale.setFont(new Font("Rockwell", Font.BOLD, 12));
+		rdbtnFemale.setFocusPainted(false);
+		rdbtnFemale.setBackground(new Color(15, 164, 149));
+		rdbtnFemale.setBounds(765, 362, 81, 23);
+		panel_2.add(rdbtnFemale);
+		
+		JLabel lblEnterPhoneNo = new JLabel("Employee's Phone No");
+		lblEnterPhoneNo.setForeground(Color.WHITE);
+		lblEnterPhoneNo.setFont(new Font("Rockwell", Font.BOLD, 14));
+		lblEnterPhoneNo.setBounds(690, 392, 214, 25);
+		panel_2.add(lblEnterPhoneNo);
+		
+		JLabel lblNewLabel_5_2 = new JLabel("Update Employee");
+		lblNewLabel_5_2.setForeground(Color.WHITE);
+		lblNewLabel_5_2.setFont(new Font("Rockwell", Font.BOLD, 26));
+		lblNewLabel_5_2.setBounds(715, 53, 256, 63);
+		panel_2.add(lblNewLabel_5_2);
 		
 		String[] cols = new String[]{"Sr No","Name","Email","Gender","Phone No"};
 		Object[][] data = new Object[][]{
@@ -311,14 +412,15 @@ public class ViewEditEmployee {
                 return false;
             }
 		};
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		scrollPane.setViewportBorder(null);
+		scrollPane.setBorder(new LineBorder(new Color(0, 0, 0)));
+		scrollPane.setBackground(new Color(0, 0, 0));
+		scrollPane.setBounds(110, 108, 522, 31);
+		panel_2.add(scrollPane);
 		table = new JTable(model);
-		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-
-        // Set the renderer for each column
-        for (int i = 0; i < table.getColumnCount(); i++) {
-            table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-        }
 		
 		table.addMouseListener(new MouseAdapter() {
 			@Override
@@ -360,68 +462,6 @@ public class ViewEditEmployee {
 		
 		table.setBackground(new Color(192, 192, 192));
 		scrollPane.setViewportView(table);
-		textField_2 = new JTextField();
-		textField_2.setForeground(Color.WHITE);
-		textField_2.setFont(new Font("Serif", Font.BOLD, 14));
-		textField_2.setColumns(10);
-		textField_2.setCaretColor(Color.WHITE);
-		textField_2.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
-		textField_2.setBackground(new Color(15, 164, 149));
-		textField_2.setBounds(770, 426, 298, 25);
-		panel_2.add(textField_2);
-		
-		passwordField = new JPasswordField();
-		passwordField.setForeground(Color.WHITE);
-		passwordField.setCaretColor(Color.WHITE);
-		passwordField.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
-		passwordField.setBackground(new Color(15, 164, 149));
-		passwordField.setBounds(770, 296, 298, 25);
-		panel_2.add(passwordField);
-		
-		rdbtnFemale = new JRadioButton("Female");
-		buttonGroup.add(rdbtnFemale);
-		rdbtnFemale.setFont(new Font("Rockwell", Font.BOLD, 12));
-		rdbtnFemale.setFocusPainted(false);
-		rdbtnFemale.setBackground(new Color(15, 164, 149));
-		rdbtnFemale.setBounds(845, 375, 81, 23);
-		panel_2.add(rdbtnFemale);
-		
-		rdbtnNewRadioButton = new JRadioButton("Male");
-		buttonGroup.add(rdbtnNewRadioButton);
-		rdbtnNewRadioButton.setFont(new Font("Rockwell", Font.BOLD, 12));
-		rdbtnNewRadioButton.setFocusPainted(false);
-		rdbtnNewRadioButton.setBackground(new Color(15, 164, 149));
-		rdbtnNewRadioButton.setBounds(770, 375, 73, 23);
-		panel_2.add(rdbtnNewRadioButton);
-		
-		JLabel lblNewLabel_6_1 = new JLabel("Employee's email");
-		lblNewLabel_6_1.setForeground(Color.WHITE);
-		lblNewLabel_6_1.setFont(new Font("Rockwell", Font.BOLD, 14));
-		lblNewLabel_6_1.setBounds(770, 206, 214, 25);
-		panel_2.add(lblNewLabel_6_1);
-		
-		textField_1 = new JTextField();
-		textField_1.setEnabled(false);
-		textField_1.setForeground(Color.WHITE);
-		textField_1.setFont(new Font("Serif", Font.BOLD, 14));
-		textField_1.setColumns(10);
-		textField_1.setCaretColor(Color.WHITE);
-		textField_1.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
-		textField_1.setBackground(new Color(15, 164, 149));
-		textField_1.setBounds(770, 228, 298, 25);
-		panel_2.add(textField_1);
-		
-		JLabel lblEnterPhoneNo = new JLabel("Employee's Phone No");
-		lblEnterPhoneNo.setForeground(Color.WHITE);
-		lblEnterPhoneNo.setFont(new Font("Rockwell", Font.BOLD, 14));
-		lblEnterPhoneNo.setBounds(770, 405, 214, 25);
-		panel_2.add(lblEnterPhoneNo);
-		
-		JLabel lblNewLabel_5_2 = new JLabel("Update Employee");
-		lblNewLabel_5_2.setForeground(Color.WHITE);
-		lblNewLabel_5_2.setFont(new Font("Rockwell", Font.BOLD, 26));
-		lblNewLabel_5_2.setBounds(795, 66, 256, 63);
-		panel_2.add(lblNewLabel_5_2);
 		
 		textField = new JTextField();
 		textField.setForeground(Color.WHITE);
@@ -430,81 +470,54 @@ public class ViewEditEmployee {
 		textField.setCaretColor(Color.WHITE);
 		textField.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
 		textField.setBackground(new Color(15, 164, 149));
-		textField.setBounds(770, 162, 298, 25);
+		textField.setBounds(690, 149, 298, 25);
 		panel_2.add(textField);
 		
-		JLabel lblUserPassword = new JLabel("Employee's Password");
-		lblUserPassword.setForeground(Color.WHITE);
-		lblUserPassword.setFont(new Font("Rockwell", Font.BOLD, 14));
-		lblUserPassword.setBounds(770, 275, 214, 25);
-		panel_2.add(lblUserPassword);
-		
-		JLabel lblSelectGender = new JLabel("Employee's Gender");
-		lblSelectGender.setForeground(Color.WHITE);
-		lblSelectGender.setFont(new Font("Rockwell", Font.BOLD, 14));
-		lblSelectGender.setBounds(770, 343, 214, 25);
-		panel_2.add(lblSelectGender);
-		
-		RoundedButton btn_register = new RoundedButton("Register", 20, Color.WHITE);
-		btn_register.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btn_register.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String email = textField_1.getText();
-				if(!email.equals("")){
-					String name = textField.getText();;
-					String pwd = new String(passwordField.getPassword());
-					String phone = textField_2.getText();
-					String gender = "";
-					if(rdbtnNewRadioButton.isSelected()){
-						gender = "M";
-					}else{
-						gender = "F";
-					}
-					GetSetEmployee employee = new GetSetEmployee();
-					employee.setEmail(email);
-					employee.setGender(gender);
-					employee.setName(name);
-					employee.setPassword(pwd);
-					employee.setPhoneno(phone);
-
-					boolean status = DbOperations.updateEmployeeData(employee);
-					
-					if(status){
-						JOptionPane.showMessageDialog(frame, "Employee data Updated Successfully!");
-						getEmployeeDetails();
-						clearForm();
-					}else{
-						JOptionPane.showMessageDialog(frame, "Error occurred!", "Update error", JOptionPane.ERROR_MESSAGE);
-					}
-				}else{
-					JOptionPane.showMessageDialog(frame, "Employee not selected!", "Invalid data", JOptionPane.ERROR_MESSAGE);
-				}
-			}
-		});
+		JLabel lblNewLabel_11 = new JLabel("Employee Details");
+		lblNewLabel_11.setForeground(new Color(255, 255, 255));
+		lblNewLabel_11.setFont(new Font("Rockwell", Font.BOLD, 19));
+		lblNewLabel_11.setBounds(260, 66, 171, 31);
+		panel_2.add(lblNewLabel_11);
 		btn_register.setText("Update");
 		btn_register.setForeground(Color.WHITE);
 		btn_register.setFont(new Font("Rockwell", Font.BOLD, 14));
 		btn_register.setFocusPainted(false);
 		btn_register.setBackground(new Color(255, 69, 0));
-		btn_register.setBounds(928, 484, 123, 40);
+		btn_register.setBounds(848, 471, 123, 40);
 		panel_2.add(btn_register);
+		
+		JLabel lblUserPassword = new JLabel("Employee's Password");
+		lblUserPassword.setForeground(Color.WHITE);
+		lblUserPassword.setFont(new Font("Rockwell", Font.BOLD, 14));
+		lblUserPassword.setBounds(690, 262, 214, 25);
+		panel_2.add(lblUserPassword);
 		
 		JLabel lblNewLabel_12 = new JLabel("Employee Name");
 		lblNewLabel_12.setForeground(Color.WHITE);
 		lblNewLabel_12.setFont(new Font("Rockwell", Font.BOLD, 14));
-		lblNewLabel_12.setBounds(770, 140, 214, 25);
+		lblNewLabel_12.setBounds(690, 127, 214, 25);
 		panel_2.add(lblNewLabel_12);
+		
+		JLabel lblSelectGender = new JLabel("Employee's Gender");
+		lblSelectGender.setForeground(Color.WHITE);
+		lblSelectGender.setFont(new Font("Rockwell", Font.BOLD, 14));
+		lblSelectGender.setBounds(690, 330, 214, 25);
+		panel_2.add(lblSelectGender);
 		
 		JLabel lblNewLabel_2_1 = new JLabel();
 		lblNewLabel_2_1.setBorder(new LineBorder(new Color(46, 79, 79)));
 		lblNewLabel_2_1.setIcon(new ImageIcon(ViewEditEmployee.class.getResource("/images/Untitled3.png")));
-		lblNewLabel_2_1.setBounds(739, 49, 364, 535);
+		lblNewLabel_2_1.setBounds(659, 36, 364, 535);
 		panel_2.add(lblNewLabel_2_1);
 		
-		JLabel lblNewLabel_11 = new JLabel("Employee Details");
-		lblNewLabel_11.setFont(new Font("Rockwell", Font.BOLD, 19));
-		lblNewLabel_11.setBounds(289, 66, 171, 31);
-		panel_2.add(lblNewLabel_11);
+		JLabel lblNewLabel_1_1 = new JLabel("");
+		lblNewLabel_1_1.setIconTextGap(3);
+		lblNewLabel_1_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\Untitled.png"));
+		lblNewLabel_1_1.setBackground(Color.WHITE);
+		lblNewLabel_1_1.setBounds(90, 11, 958, 579);
+		panel_2.add(lblNewLabel_1_1);
+		
+		
 		
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBorder(new LineBorder(new Color(46, 79, 79)));

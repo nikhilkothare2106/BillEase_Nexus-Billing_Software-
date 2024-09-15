@@ -1,6 +1,6 @@
 package gettersetter;
 
-public class Register {
+public class GetSetEmployee {
     private String name;
     private String email;
     private String password;

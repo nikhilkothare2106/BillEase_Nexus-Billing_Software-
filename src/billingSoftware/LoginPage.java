@@ -124,6 +124,7 @@ public class LoginPage {
 				boolean login_status = DbOperations.login(email, password);
 				if(login_status){
 					new AdminPanel();
+					frame.setVisible(false);
 				}else{
 					JOptionPane.showMessageDialog(frame, "Email id and password didnt matched", "Login Error", JOptionPane.ERROR_MESSAGE);
 					txtEnterName.setText("");

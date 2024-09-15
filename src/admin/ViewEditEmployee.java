@@ -521,7 +521,7 @@ public class ViewEditEmployee {
 		
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBorder(new LineBorder(new Color(46, 79, 79)));
-		lblNewLabel_3.setIcon(new ImageIcon(ViewEditEmployee.class.getResource("/images/Untitled7.png")));
+		lblNewLabel_3.setIcon(new ImageIcon(ViewEditEmployee.class.getResource("/images/Untitled1.png")));
 		lblNewLabel_3.setBounds(0, 0, 1136, 644);
 		panel_2.add(lblNewLabel_3);
 		

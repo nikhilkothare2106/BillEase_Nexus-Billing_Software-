@@ -117,4 +117,35 @@ public class DbOperations {
         }
         return status;
     }
+
+    public static ResultSet getAdminPassword(){
+        ResultSet rs = null;
+        try{
+            Connection connection = DbConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("select Password from register where Email='admin@gmail.com'");
+            rs = statement.executeQuery();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public static boolean changeAdminPassword(String pwd){
+        boolean status = false;
+        try{
+            Connection connection = DbConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("update register set Password=? where Email='admin@gmail.com'");
+            statement.setString(1, pwd);
+
+            int i = statement.executeUpdate();
+            if(i > 0){
+                status = true;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return status;
+    }
 }

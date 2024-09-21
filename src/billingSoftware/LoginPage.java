@@ -34,9 +34,11 @@ public class LoginPage {
 
 	public LoginPage() {
 		initialize();
+		frame.getContentPane().setBackground(new Color(46, 79, 79));
 		frame.setVisible(true);
 		
 	}
+
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(() -> new LoginPage());
 	}
@@ -62,7 +64,7 @@ public class LoginPage {
 		lblNewLabel_3_2.setBounds(134, 61, 259, 67);
 		frame.getContentPane().add(lblNewLabel_3_2);
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
+		panel.setBackground(new Color(15, 164, 149));
 		panel.setBounds(523, 31, 364, 548);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -160,18 +162,16 @@ public class LoginPage {
 		});
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\Untitled3.png"));
 		lblNewLabel_2.setBounds(0, 0, 381, 548);
 		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\imageedit_7_8214613300.png"));
+		lblNewLabel_4.setIcon(new ImageIcon(LoginPage.class.getResource("/images/imageedit_7_8214613300.png")));
 		lblNewLabel_4.setBounds(75, 200, 364, 379);
 		frame.getContentPane().add(lblNewLabel_4);
 		
-		lblNewLabel_1 = new JLabel("Billing Software");
+		lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIconTextGap(3);
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\Untitled.png"));
 		lblNewLabel_1.setBackground(new Color(255, 255, 255));
 		lblNewLabel_1.setBounds(0, 0, 944, 611);
 		frame.getContentPane().add(lblNewLabel_1);

@@ -51,7 +51,7 @@ public class RegisterEmployee {
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
+		panel.setBackground(new Color(72, 201, 176));
 		panel.setBounds(228, 0, 1136, 101);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -79,155 +79,153 @@ public class RegisterEmployee {
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBorder(new LineBorder(new Color(15, 191, 169)));
 		lblNewLabel.setBackground(new Color(255, 255, 255));
-		lblNewLabel.setIcon(new ImageIcon(AdminPanel.class.getResource("/images/Untitled4.png")));
 		lblNewLabel.setBounds(0, 0, 1204, 101);
 		panel.add(lblNewLabel);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(46, 79, 79));
 		panel_1.setBounds(0, 101, 228, 638);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(new Color(46, 79, 79));
 		panel_4.setBounds(0, 28, 228, 559);
 		panel_1.add(panel_4);
 		panel_4.setLayout(null);
 		
 		JLabel lblNewLabel_10 = new JLabel("Change Password");
-		lblNewLabel_10.setForeground(new Color(47, 79, 79));
+		lblNewLabel_10.setForeground(new Color(0, 0, 0));
 		lblNewLabel_10.setFont(new Font("Rockwell", Font.BOLD, 14));
-		lblNewLabel_10.setBounds(66, 358, 142, 57);
+		lblNewLabel_10.setBounds(76, 359, 142, 57);
 		lblNewLabel_10.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_10);
 		
 		JLabel lblNewLabel_5_1_1_2 = new JLabel("");
-		lblNewLabel_5_1_1_2.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\edititem.png"));
-		lblNewLabel_5_1_1_2.setBounds(0, 274, 53, 57);
+		lblNewLabel_5_1_1_2.setIcon(new ImageIcon(RegisterEmployee.class.getResource("/images/edititem.png")));
+		lblNewLabel_5_1_1_2.setBounds(10, 274, 53, 57);
 		lblNewLabel_5_1_1_2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_5_1_1_2);
 		
 		JLabel lblNewLabel_5_1_1 = new JLabel("");
-		lblNewLabel_5_1_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\edit.png"));
-		lblNewLabel_5_1_1.setBounds(10, 93, 53, 57);
+		lblNewLabel_5_1_1.setIcon(new ImageIcon(RegisterEmployee.class.getResource("/images/edit.png")));
+		lblNewLabel_5_1_1.setBounds(19, 95, 53, 57);
 		lblNewLabel_5_1_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_5_1_1);
 		
 		JLabel lblNewLabel_5_3_1 = new JLabel("Add items");
-		lblNewLabel_5_3_1.setForeground(new Color(47, 79, 79));
+		lblNewLabel_5_3_1.setForeground(new Color(0, 0, 0));
 		lblNewLabel_5_3_1.setFont(new Font("Rockwell", Font.BOLD, 14));
 		lblNewLabel_5_3_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		lblNewLabel_5_3_1.setBounds(66, 176, 142, 57);
+		lblNewLabel_5_3_1.setBounds(66, 176, 112, 57);
 		panel_4.add(lblNewLabel_5_3_1);
 		
 		JLabel lblNewLabel_5_1_1_1 = new JLabel("");
-		lblNewLabel_5_1_1_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\additem.png"));
-		lblNewLabel_5_1_1_1.setBounds(10, 176, 53, 57);
+		lblNewLabel_5_1_1_1.setIcon(new ImageIcon(RegisterEmployee.class.getResource("/images/additem.png")));
+		lblNewLabel_5_1_1_1.setBounds(17, 176, 47, 57);
 		lblNewLabel_5_1_1_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_5_1_1_1);
 		
 		JLabel lblNewLabel_5_1_1_2_1 = new JLabel("");
-		lblNewLabel_5_1_1_2_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\changepassword.png"));
-		lblNewLabel_5_1_1_2_1.setBounds(6, 358, 57, 57);
+		lblNewLabel_5_1_1_2_1.setIcon(new ImageIcon(RegisterEmployee.class.getResource("/images/changepassword.png")));
+		lblNewLabel_5_1_1_2_1.setBounds(23, 359, 57, 57);
 		lblNewLabel_5_1_1_2_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_5_1_1_2_1);
 		
 		JLabel lblNewLabel_5_3 = new JLabel("View/Edit Employee");
-		lblNewLabel_5_3.setForeground(new Color(47, 79, 79));
+		lblNewLabel_5_3.setForeground(new Color(0, 0, 0));
 		lblNewLabel_5_3.setFont(new Font("Rockwell", Font.BOLD, 14));
 		lblNewLabel_5_3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		lblNewLabel_5_3.setBounds(66, 93, 142, 57);
 		panel_4.add(lblNewLabel_5_3);
 		
 		JLabel lblNewLabel_5 = new JLabel("View/Edit items");
-		lblNewLabel_5.setForeground(new Color(47, 79, 79));
+		lblNewLabel_5.setForeground(new Color(0, 0, 0));
 		lblNewLabel_5.setFont(new Font("Rockwell", Font.BOLD, 14));
 		lblNewLabel_5.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		lblNewLabel_5.setBounds(66, 266, 142, 57);
 		panel_4.add(lblNewLabel_5);
 		
-		JLabel lblNewLabel_8_3 = new JLabel("New label");
-		lblNewLabel_8_3.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\Untitled.png"));
-		lblNewLabel_8_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblNewLabel_8_3.setBounds(0, 266, 228, 57);
+		 RoundedLabel lblNewLabel_8_3 = new RoundedLabel("", 30, new Color(240,240,240), Color.BLACK, 2);
+		lblNewLabel_8_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new ViewEditItem();
+				frame.setVisible(false);
+			}
+		});
+		lblNewLabel_8_3.setBounds(10, 266, 208, 57);
 		lblNewLabel_8_3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_8_3);
 		
-		JLabel lblNewLabel_8_1 = new JLabel("New label");
+		 RoundedLabel lblNewLabel_8_1 = new RoundedLabel("", 30, new Color(240,240,240), Color.BLACK, 2);
 		lblNewLabel_8_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				new ViewEditEmployee();
 				frame.setVisible(false);	}
 		});
-		lblNewLabel_8_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\Untitled.png"));
-		lblNewLabel_8_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblNewLabel_8_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		lblNewLabel_8_1.setBounds(0, 93, 228, 57);
+		lblNewLabel_8_1.setBounds(10, 93, 208, 57);
 		panel_4.add(lblNewLabel_8_1);
 		
-		JLabel lblNewLabel_8_4 = new JLabel("New label");
+		 RoundedLabel lblNewLabel_8_4 = new RoundedLabel("", 30, new Color(240,240,240), Color.BLACK, 2);
 		lblNewLabel_8_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				new ChangePassword();
 				frame.setVisible(false);			}
 		});
-		lblNewLabel_8_4.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\Untitled.png"));
-		lblNewLabel_8_4.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblNewLabel_8_4.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		lblNewLabel_8_4.setBounds(0, 358, 228, 57);
+		lblNewLabel_8_4.setBounds(10, 358, 208, 57);
 		panel_4.add(lblNewLabel_8_4);
 		
-		JLabel lblNewLabel_8_2 = new JLabel("New label");
-		lblNewLabel_8_2.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\Untitled.png"));
-		lblNewLabel_8_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+		RoundedLabel lblNewLabel_8_2 = new RoundedLabel("", 30, new Color(240,240,240), Color.BLACK, 2);
+		lblNewLabel_8_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new AddItems();
+				frame.setVisible(false);
+			}
+		});
 		lblNewLabel_8_2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		lblNewLabel_8_2.setBounds(0, 176, 228, 57);
+		lblNewLabel_8_2.setBounds(10, 176, 208, 57);
 		panel_4.add(lblNewLabel_8_2);
 		
 		JLabel lblNewLabel_6 = new JLabel("Register Employee");
-		lblNewLabel_6.setForeground(new Color(47, 79, 79));
+		lblNewLabel_6.setForeground(new Color(0, 0, 0));
 		lblNewLabel_6.setFont(new Font("Rockwell", Font.BOLD, 14));
-		lblNewLabel_6.setBounds(66, 11, 142, 57);
+		lblNewLabel_6.setBounds(72, 11, 142, 57);
 		lblNewLabel_6.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_5_1 = new JLabel("");
-		lblNewLabel_5_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\register.png"));
-		lblNewLabel_5_1.setBounds(10, 11, 53, 57);
+		lblNewLabel_5_1.setIcon(new ImageIcon(RegisterEmployee.class.getResource("/images/register.png")));
+		lblNewLabel_5_1.setBounds(22, 11, 53, 57);
 		lblNewLabel_5_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_5_1);
 		
-		JLabel lblNewLabel_8 = new JLabel("New label");
-		lblNewLabel_8.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				new RegisterEmployee();
-				frame.setVisible(false);
-			}
-		});
+//		JLabel lblNewLabel_8 = new JLabel("");
+		 RoundedLabel lblNewLabel_8 = new RoundedLabel("", 30, new Color(240,240,240), Color.BLACK, 2);
 		lblNewLabel_8.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		lblNewLabel_8.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblNewLabel_8.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\Untitled.png"));
-		lblNewLabel_8.setBounds(0, 11, 228, 57);
+		lblNewLabel_8.setBounds(10, 11, 208, 57);
 		panel_4.add(lblNewLabel_8);
 		
 		JLabel lblNewLabel_7 = new JLabel("");
 		lblNewLabel_7.setBorder(new MatteBorder(0, 1, 0, 1, (Color) new Color(0, 0, 0)));
-		lblNewLabel_7.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\Untitled.png"));
 		lblNewLabel_7.setBounds(0, 0, 228, 559);
 		panel_4.add(lblNewLabel_7);
 		
 		
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setBounds(0, 0, 228, 741);
+		lblNewLabel_2.setBounds(0, 0, 228, 638);
 		lblNewLabel_2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		lblNewLabel_2.setIcon(new ImageIcon(AdminPanel.class.getResource("/images/Untitled.png")));
 		panel_1.add(lblNewLabel_2);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(228, 102, 1136, 644);
+		panel_2.setBackground(new Color(201, 228, 222));
+		panel_2.setBounds(228, 101, 1136, 644);
 		frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -244,13 +242,13 @@ public class RegisterEmployee {
 		panel_2.add(lblNewLabel_3_1_1);
 		
 		JLabel lblNewLabel_4_1 = new JLabel("");
-		lblNewLabel_4_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\imageedit_7_8214613300.png"));
+		lblNewLabel_4_1.setIcon(new ImageIcon(RegisterEmployee.class.getResource("/images/imageedit_7_8214613300.png")));
 		lblNewLabel_4_1.setBounds(156, 187, 364, 379);
 		panel_2.add(lblNewLabel_4_1);
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setLayout(null);
-		panel_5.setBackground(Color.WHITE);
+		panel_5.setBackground(new Color(46, 79, 79));
 		panel_5.setBounds(623, 42, 346, 516);
 		panel_2.add(panel_5);
 		
@@ -417,39 +415,50 @@ public class RegisterEmployee {
 		lblNewLabel_5_2.setBounds(49, 21, 256, 63);
 		panel_5.add(lblNewLabel_5_2);
 		
-		JLabel lblNewLabel_2_1 = new JLabel();
-		lblNewLabel_2_1.setIcon(new ImageIcon(RegisterEmployee.class.getResource("/images/Untitled3.png")));
-		lblNewLabel_2_1.setBounds(0, 0, 355, 516);
+		RoundedLabel lblNewLabel_2_1 = new RoundedLabel("", 30, new Color(15,164,149), Color.BLACK, 1);
+		lblNewLabel_2_1.setBounds(0, 0, 346, 516);
 		panel_5.add(lblNewLabel_2_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("");
 		lblNewLabel_1_1.setIconTextGap(3);
-		lblNewLabel_1_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\Untitled.png"));
-		lblNewLabel_1_1.setBackground(Color.WHITE);
+		lblNewLabel_1_1.setBackground(new Color(46, 79, 79));
 		lblNewLabel_1_1.setBounds(90, 11, 958, 579);
 		panel_2.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(AdminPanel.class.getResource("/images/Untitled1.png")));
+		lblNewLabel_3.setBorder(new LineBorder(new Color(46, 79, 79)));
 		lblNewLabel_3.setBounds(0, 0, 1136, 638);
 		panel_2.add(lblNewLabel_3);
 		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBackground(new Color(46, 79, 79));
+		panel_6.setBounds(90, 11, 958, 579);
+		panel_2.add(panel_6);
+		
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(46, 79, 79));
 		panel_3.setBorder(null);
 		panel_3.setBounds(0, 0, 228, 101);
 		frame.getContentPane().add(panel_3);
 		panel_3.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new AdminPanel();
+				frame.setVisible(false);
+			}
+		});
 		lblNewLabel_1.setBounds(51, 0, 112, 101);
 		panel_3.add(lblNewLabel_1);
 		lblNewLabel_1.setIcon(new ImageIcon(AdminPanel.class.getResource("/images/admin.png")));
 		
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\Untitled.png"));
 		lblNewLabel_4.setBounds(0, 0, 228, 101);
 		panel_3.add(lblNewLabel_4);
-		lblNewLabel_4.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
+		lblNewLabel_4.setBorder(null);
 		lblNewLabel_4.setForeground(new Color(255, 255, 255));
 		lblNewLabel_4.setBackground(new Color(255, 255, 255));
 		;

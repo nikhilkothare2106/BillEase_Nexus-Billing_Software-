@@ -13,16 +13,9 @@ public class StartPage {
 	JProgressBar progressBar;
 	JLabel lblNewLabel,lblNewLabel_2;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
-		SwingUtilities.invokeLater(() -> new StartPage());
+		new StartPage();
 	}
-
-	/**
-	 * Create the application.
-	 */
 	public StartPage() {
 		initialize();
 		frame.setVisible(true);
@@ -35,7 +28,7 @@ public class StartPage {
 			progressBar.setValue(i);
 			if(i == 100){
 				timer.stop();
-				SwingUtilities.invokeLater(() -> new LoginPage());
+				new LoginPage();
 				frame.setVisible(false);
 			}
 			if(i == 10) {
@@ -77,7 +70,7 @@ public class StartPage {
 		frame.getContentPane().add(progressBar);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\startlogo.png"));
+		lblNewLabel_1.setIcon(new ImageIcon(StartPage.class.getResource("/images/startlogo.png")));
 		lblNewLabel_1.setBounds(43, 49, 309, 303);
 		frame.getContentPane().add(lblNewLabel_1);
 		
@@ -94,7 +87,7 @@ public class StartPage {
 		frame.getContentPane().add(lblNewLabel_3);
 		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\startbg.jpg"));
+		lblNewLabel.setIcon(new ImageIcon(StartPage.class.getResource("/images/startbg.jpg")));
 		lblNewLabel.setBounds(0, 0, 696, 414);
 		frame.getContentPane().add(lblNewLabel);
 		frame.setLocationRelativeTo(null);	

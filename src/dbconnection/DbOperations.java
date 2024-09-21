@@ -200,4 +200,45 @@ public class DbOperations {
         }
         return rs;
     }
+
+    public static boolean deleteItemData(String id){
+        boolean status = false;
+        try{
+            Connection connection = DbConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("delete from items where id=?");
+            statement.setString(1, id);
+
+            int i = statement.executeUpdate();
+            if(i > 0){
+                status = true;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return status;
+    }
+
+
+    public static boolean updateItemData(GetSetItem item){
+        boolean status = false;
+        try{
+            Connection connection = DbConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("update items set Name=?, Price=?, Quantity=?,Category=? where id=?");
+            
+            statement.setString(1, item.getName());
+            statement.setString(2, item.getPrice());
+            statement.setString(3, item.getQuantity());
+            statement.setString(4, item.getCategory());
+            statement.setString(5, item.getId());
+            int i = statement.executeUpdate();
+            if(i > 0){
+                status = true;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return status;
+    }
 }

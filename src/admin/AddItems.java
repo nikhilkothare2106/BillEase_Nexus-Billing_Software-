@@ -173,7 +173,7 @@ public class AddItems {
 		lblNewLabel_8_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new ChangePassword();
+				new ChangePasswordAdmin();
 				frame.setVisible(false);			}
 		});
 		lblNewLabel_8_4.setCursor(new Cursor(Cursor.HAND_CURSOR));

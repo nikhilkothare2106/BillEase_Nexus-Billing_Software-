@@ -14,7 +14,7 @@ import javax.swing.border.MatteBorder;
 import billingSoftware.LoginPage;
 import dbconnection.DbOperations;
 
-public class ChangePassword {
+public class ChangePasswordAdmin {
 
 	private JFrame frame = new JFrame();
 	private JPasswordField confirmpwd;
@@ -27,7 +27,7 @@ public class ChangePassword {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ChangePassword window = new ChangePassword();
+					ChangePasswordAdmin window = new ChangePasswordAdmin();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +37,7 @@ public class ChangePassword {
 	}
 
 
-	public ChangePassword() {
+	public ChangePasswordAdmin() {
 		initialize();
 		frame.setVisible(true);
 	}
@@ -102,13 +102,13 @@ public class ChangePassword {
 		panel_4.add(lblNewLabel_10);
 		
 		JLabel lblNewLabel_5_1_1_2 = new JLabel("");
-		lblNewLabel_5_1_1_2.setIcon(new ImageIcon(ChangePassword.class.getResource("/images/edititem.png")));
+		lblNewLabel_5_1_1_2.setIcon(new ImageIcon(ChangePasswordAdmin.class.getResource("/images/edititem.png")));
 		lblNewLabel_5_1_1_2.setBounds(10, 274, 53, 57);
 		lblNewLabel_5_1_1_2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_5_1_1_2);
 		
 		JLabel lblNewLabel_5_1_1 = new JLabel("");
-		lblNewLabel_5_1_1.setIcon(new ImageIcon(ChangePassword.class.getResource("/images/edit.png")));
+		lblNewLabel_5_1_1.setIcon(new ImageIcon(ChangePasswordAdmin.class.getResource("/images/edit.png")));
 		lblNewLabel_5_1_1.setBounds(20, 93, 53, 57);
 		lblNewLabel_5_1_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_5_1_1);
@@ -121,13 +121,13 @@ public class ChangePassword {
 		panel_4.add(lblNewLabel_5_3_1);
 		
 		JLabel lblNewLabel_5_1_1_1 = new JLabel("");
-		lblNewLabel_5_1_1_1.setIcon(new ImageIcon(ChangePassword.class.getResource("/images/additem.png")));
+		lblNewLabel_5_1_1_1.setIcon(new ImageIcon(ChangePasswordAdmin.class.getResource("/images/additem.png")));
 		lblNewLabel_5_1_1_1.setBounds(20, 176, 53, 57);
 		lblNewLabel_5_1_1_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_5_1_1_1);
 		
 		JLabel lblNewLabel_5_1_1_2_1 = new JLabel("");
-		lblNewLabel_5_1_1_2_1.setIcon(new ImageIcon(ChangePassword.class.getResource("/images/changepassword.png")));
+		lblNewLabel_5_1_1_2_1.setIcon(new ImageIcon(ChangePasswordAdmin.class.getResource("/images/changepassword.png")));
 		lblNewLabel_5_1_1_2_1.setBounds(16, 358, 57, 57);
 		lblNewLabel_5_1_1_2_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_5_1_1_2_1);
@@ -194,7 +194,7 @@ public class ChangePassword {
 		panel_4.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_5_1 = new JLabel("");
-		lblNewLabel_5_1.setIcon(new ImageIcon(ChangePassword.class.getResource("/images/register.png")));
+		lblNewLabel_5_1.setIcon(new ImageIcon(ChangePasswordAdmin.class.getResource("/images/register.png")));
 		lblNewLabel_5_1.setBounds(20, 11, 53, 57);
 		lblNewLabel_5_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_5_1);
@@ -242,7 +242,7 @@ public class ChangePassword {
 		panel_2.add(lblNewLabel_3_1_1);
 		
 		JLabel lblNewLabel_4_1 = new JLabel("");
-		lblNewLabel_4_1.setIcon(new ImageIcon(ChangePassword.class.getResource("/images/imageedit_7_8214613300.png")));
+		lblNewLabel_4_1.setIcon(new ImageIcon(ChangePasswordAdmin.class.getResource("/images/imageedit_7_8214613300.png")));
 		lblNewLabel_4_1.setBounds(156, 187, 364, 379);
 		panel_2.add(lblNewLabel_4_1);
 		

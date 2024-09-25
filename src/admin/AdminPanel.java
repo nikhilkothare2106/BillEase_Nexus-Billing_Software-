@@ -46,6 +46,16 @@ public class AdminPanel {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel_9 = new JLabel("  Log out");
+		lblNewLabel_9.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_9.setForeground(new Color(0, 0, 240));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_9.setForeground(new Color(240, 0, 0));
+			}
+		});
 		lblNewLabel_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel_9.setForeground(new Color(240, 0, 0));
 		lblNewLabel_9.setFont(new Font("Rockwell", Font.BOLD, 22));
@@ -163,7 +173,7 @@ public class AdminPanel {
 		lblNewLabel_8_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new ChangePassword();
+				new ChangePasswordAdmin();
 				frame.setVisible(false);
 			}
 		});

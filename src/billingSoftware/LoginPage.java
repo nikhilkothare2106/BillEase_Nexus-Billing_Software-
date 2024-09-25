@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,9 +19,12 @@ import javax.swing.border.MatteBorder;
 
 import userdefined.*;
 import dbconnection.*;
+import employee.EmployeePanel;
+import gettersetter.GetSetEmployee;
 import admin.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Cursor;
 public class LoginPage {
 
 	private JFrame frame = new JFrame();
@@ -42,9 +46,7 @@ public class LoginPage {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(() -> new LoginPage());
 	}
-	/**
-	 * Initialize the contents of the frame.
-	 */
+
 	private void initialize() {
 		frame.setBounds(0, 0, 950, 650);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -117,20 +119,38 @@ public class LoginPage {
 		panel.add(lblNewLabel_5);
 		
 		btnNewButton = new RoundedButton("Log in",20, Color.WHITE);
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String email = txtEnterName.getText();
 				String password = String.valueOf(pwdEnterPassword.getPassword());
 
-				boolean login_status = DbOperations.login(email, password);
-				if(login_status){
-					new AdminPanel();
-					frame.setVisible(false);
-				}else{
-					JOptionPane.showMessageDialog(frame, "Email id and password didnt matched", "Login Error", JOptionPane.ERROR_MESSAGE);
-					txtEnterName.setText("");
-					pwdEnterPassword.setText("");
-					
+				ResultSet rs = DbOperations.login(email, password);
+				try{
+					if(rs.next()){
+						String name = rs.getString("Name");
+						String gender = rs.getString("Gender");
+						String phone = rs.getString("Phone_no");
+						String module = rs.getString("Module");
+
+						GetSetEmployee employee = new GetSetEmployee();
+						employee.setName(name);
+						employee.setEmail(email);
+						employee.setGender(gender);
+						employee.setPhoneno(phone);
+
+						if(module.equals("Admin")){
+							new AdminPanel();
+						}else if(module.equals("Employee")){
+							new EmployeePanel(employee);
+						}
+						frame.setVisible(false);
+					}else {
+						JOptionPane.showMessageDialog(frame, "Wrong Email or Password", "Invalid error", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				catch(Exception e1){
+					e1.printStackTrace();
 				}
 			}
 		});

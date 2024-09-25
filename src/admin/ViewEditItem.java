@@ -103,6 +103,7 @@ public class ViewEditItem {
 			scrollPane.setBounds(rc1.x, rc1.y, rc1.width, tableHeight + 30);
 		}
 	}
+	@SuppressWarnings("rawtypes")
 	private void initialize() {
 		frame.setBounds(0, 0, 1380, 780);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -227,7 +228,7 @@ public class ViewEditItem {
 		lblNewLabel_8_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new ChangePassword();
+				new ChangePasswordAdmin();
 				frame.setVisible(false);
 			}
 		});
@@ -445,7 +446,7 @@ public class ViewEditItem {
 		panel_2.add(scrollPane);
 		table = new JTable(model);
 		table.addMouseListener(new MouseAdapter() {
-			@SuppressWarnings({ "rawtypes", "unchecked" })
+			@SuppressWarnings({ "unchecked" })
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				

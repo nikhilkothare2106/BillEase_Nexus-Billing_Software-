@@ -225,7 +225,7 @@ public class ViewEditEmployee {
 		lblNewLabel_8_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new ChangePassword();
+				new ChangePasswordAdmin();
 				frame.setVisible(false);
 			}
 		});
@@ -434,9 +434,6 @@ public class ViewEditEmployee {
 			
 		};
 		model = new DefaultTableModel(data, cols){
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override

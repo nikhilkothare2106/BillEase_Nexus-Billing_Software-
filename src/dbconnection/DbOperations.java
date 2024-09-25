@@ -6,23 +6,21 @@ import java.sql.ResultSet;
 import gettersetter.*;
 
 public class DbOperations {
-    public static boolean login(String email,String password){
-        boolean status = false;
+
+    public static ResultSet login(String email,String password){
+        ResultSet rs = null;
         try{
             Connection connection = DbConnection.getConnection();
             PreparedStatement statement = connection.prepareStatement("select * from register where Email=? and Password=?");
             statement.setString(1, email);
             statement.setString(2, password);
 
-            ResultSet rs = statement.executeQuery();
-            if(rs.next()){
-                status = true;
-            }
+            rs = statement.executeQuery();
         }
         catch(Exception e){
-
+            e.printStackTrace();
         }
-        return status;
+        return rs;
     }
 
     public static boolean register(GetSetEmployee employee){
@@ -231,6 +229,61 @@ public class DbOperations {
             statement.setString(3, item.getQuantity());
             statement.setString(4, item.getCategory());
             statement.setString(5, item.getId());
+            int i = statement.executeUpdate();
+            if(i > 0){
+                status = true;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return status;
+    }
+
+    public static boolean updateProfile(GetSetEmployee employee, String email){
+        boolean status = false;
+        try{
+            Connection connection = DbConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("update register set Name=?,Gender=?,Phone_No=?,Email=? where Email=?");
+            statement.setString(1, employee.getName());
+            statement.setString(2, employee.getGender());
+            statement.setString(3, employee.getPhoneno());
+            statement.setString(4, employee.getEmail());
+            statement.setString(5, email);
+
+            int i = statement.executeUpdate();
+            if(i > 0){
+                status = true;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return status;
+    }
+
+    public static ResultSet getEmployeePassword(String email){
+        ResultSet rs = null;
+        try{
+            Connection connection = DbConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("select Password from register where Email=?");
+            statement.setString(1, email);
+            rs = statement.executeQuery();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public static boolean changeEmployeePassword(String pwd,String email){
+        boolean status = false;
+        try{
+            Connection connection = DbConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("update register set Password=? where Email=?");
+            statement.setString(1, pwd);
+            statement.setString(2, email);
+            
             int i = statement.executeUpdate();
             if(i > 0){
                 status = true;

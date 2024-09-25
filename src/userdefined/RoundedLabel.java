@@ -5,7 +5,11 @@ import java.awt.*;
 
 public class RoundedLabel extends JLabel {
 
-    private Color backgroundColor;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Color backgroundColor;
     private Color borderColor;
     private int cornerRadius = 30;
     private int borderThickness = 2; // Thickness of the border

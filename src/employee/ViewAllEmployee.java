@@ -11,26 +11,15 @@ import java.sql.ResultSet;
 
 public class ViewAllEmployee {
 
-	private JFrame frame;
+	private JFrame frame = new JFrame();
 	private JTable table;
 	private DefaultTableModel model;
 	private Object[] row;
 	private JScrollPane scrollPane;
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewAllEmployee window = new ViewAllEmployee();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	public ViewAllEmployee() {
 		initialize();
+		frame.setVisible(true);
 	}
 
 	private void setTableHeight() {
@@ -142,7 +131,7 @@ public class ViewAllEmployee {
 		scrollPane.setViewportBorder(null);
 		scrollPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		scrollPane.setBackground(Color.BLACK);
-		scrollPane.setBounds(487, 133, 522, 25);
+		scrollPane.setBounds(477, 133, 522, 25);
 		panel_1.add(scrollPane);
 		
 		

@@ -40,6 +40,7 @@ public class StartPage {
 			i++;
 		}
 	});	
+	private JLabel lblNewLabel_4;
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -56,6 +57,12 @@ public class StartPage {
 		frame.setBounds(100, 100, 696, 414);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		lblNewLabel_4 = new JLabel("Created by: Nikhil Kothare");
+		lblNewLabel_4.setFont(new Font("Rockwell", Font.PLAIN, 11));
+		lblNewLabel_4.setForeground(new Color(255, 255, 255));
+		lblNewLabel_4.setBounds(530, 11, 143, 26);
+		frame.getContentPane().add(lblNewLabel_4);
 		
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setFont(new Font("Rockwell", Font.PLAIN, 14));

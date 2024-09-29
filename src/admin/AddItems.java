@@ -23,20 +23,6 @@ public class AddItems {
 	private JTextField quantitytext;
 	private String otherselected = "";
 
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AddItems window = new AddItems();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	public AddItems() {
 		initialize();
 		frame.setVisible(true);
@@ -44,6 +30,7 @@ public class AddItems {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
+		frame.setTitle("Add Items");
 		frame.setBounds(0, 0, 1380, 780);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
@@ -94,10 +81,33 @@ public class AddItems {
 		panel_1.add(panel_4);
 		panel_4.setLayout(null);
 		
+		JLabel lblNewLabel_5_1_1_2_1_1 = new JLabel("");
+		lblNewLabel_5_1_1_2_1_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\shopping_history.png"));
+		lblNewLabel_5_1_1_2_1_1.setBounds(19, 363, 50, 57);
+		panel_4.add(lblNewLabel_5_1_1_2_1_1);
+		
+		JLabel lblNewLabel_10_1 = new JLabel("Shopping History");
+		lblNewLabel_10_1.setForeground(Color.BLACK);
+		lblNewLabel_10_1.setFont(new Font("Rockwell", Font.BOLD, 14));
+		lblNewLabel_10_1.setBounds(73, 361, 119, 57);
+		panel_4.add(lblNewLabel_10_1);
+		
+		RoundedLabel lblNewLabel_8_4_1 = new RoundedLabel("", 30, UIManager.getColor("Button.background"), Color.BLACK, 2);
+		lblNewLabel_8_4_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new ShoppingHistory();
+				frame.setVisible(false);
+			}
+		});
+		lblNewLabel_8_4_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblNewLabel_8_4_1.setBounds(7, 361, 208, 57);
+		panel_4.add(lblNewLabel_8_4_1);
+		
 		JLabel lblNewLabel_10 = new JLabel("Change Password");
 		lblNewLabel_10.setForeground(new Color(0, 0, 0));
 		lblNewLabel_10.setFont(new Font("Rockwell", Font.BOLD, 14));
-		lblNewLabel_10.setBounds(75, 358, 129, 57);
+		lblNewLabel_10.setBounds(75, 454, 129, 57);
 		lblNewLabel_10.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_10);
 		
@@ -128,7 +138,7 @@ public class AddItems {
 		
 		JLabel lblNewLabel_5_1_1_2_1 = new JLabel("");
 		lblNewLabel_5_1_1_2_1.setIcon(new ImageIcon(AddItems.class.getResource("/images/changepassword.png")));
-		lblNewLabel_5_1_1_2_1.setBounds(16, 358, 57, 57);
+		lblNewLabel_5_1_1_2_1.setBounds(16, 454, 57, 57);
 		lblNewLabel_5_1_1_2_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_5_1_1_2_1);
 		
@@ -177,7 +187,7 @@ public class AddItems {
 				frame.setVisible(false);			}
 		});
 		lblNewLabel_8_4.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		lblNewLabel_8_4.setBounds(10, 358, 208, 57);
+		lblNewLabel_8_4.setBounds(10, 454, 208, 57);
 		panel_4.add(lblNewLabel_8_4);
 		
 		RoundedLabel lblNewLabel_8_2 = new RoundedLabel("", 30, new Color(240,240,240), Color.BLACK, 2);

@@ -42,12 +42,9 @@ public class LoginPage {
 		frame.setVisible(true);
 		
 	}
-
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(() -> new LoginPage());
-	}
-
+	
 	private void initialize() {
+		frame.setTitle("Login");
 		frame.setBounds(0, 0, 950, 650);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -66,8 +63,8 @@ public class LoginPage {
 		lblNewLabel_3_2.setBounds(134, 61, 259, 67);
 		frame.getContentPane().add(lblNewLabel_3_2);
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(15, 164, 149));
-		panel.setBounds(523, 31, 364, 548);
+		panel.setBackground(new Color(46, 79, 79));
+		panel.setBounds(525, 77, 320, 453);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -83,7 +80,7 @@ public class LoginPage {
 		txtEnterName.setFont(new Font("Serif", Font.BOLD, 14));
 		txtEnterName.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
 		txtEnterName.setBackground(new Color(15, 164, 149));
-		txtEnterName.setBounds(28, 214, 298, 25);
+		txtEnterName.setBounds(27, 179, 266, 25);
 		panel.add(txtEnterName);
 		txtEnterName.setColumns(10);
 		
@@ -97,25 +94,25 @@ public class LoginPage {
 		pwdEnterPassword.setForeground(new Color(255, 255, 255));
 		pwdEnterPassword.setBackground(new Color(15, 164, 149));
 		pwdEnterPassword.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
-		pwdEnterPassword.setBounds(28, 293, 298, 25);
+		pwdEnterPassword.setBounds(27, 258, 266, 25);
 		panel.add(pwdEnterPassword);
 		
 		lblNewLabel = new JLabel("Enter email");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("Rockwell", Font.PLAIN, 14));
-		lblNewLabel.setBounds(28, 192, 79, 25);
+		lblNewLabel.setFont(new Font("Rockwell", Font.BOLD, 14));
+		lblNewLabel.setBounds(27, 157, 95, 25);
 		panel.add(lblNewLabel);
 		
 		lblUserPassword = new JLabel("Enter Password");
 		lblUserPassword.setForeground(new Color(255, 255, 255));
-		lblUserPassword.setFont(new Font("Rockwell", Font.PLAIN, 14));
-		lblUserPassword.setBounds(28, 268, 106, 25);
+		lblUserPassword.setFont(new Font("Rockwell", Font.BOLD, 14));
+		lblUserPassword.setBounds(27, 233, 106, 25);
 		panel.add(lblUserPassword);
 		
 		JLabel lblNewLabel_5 = new JLabel("Login Page");
 		lblNewLabel_5.setForeground(new Color(255, 255, 255));
 		lblNewLabel_5.setFont(new Font("Rockwell", Font.BOLD, 25));
-		lblNewLabel_5.setBounds(102, 73, 158, 63);
+		lblNewLabel_5.setBounds(93, 67, 158, 63);
 		panel.add(lblNewLabel_5);
 		
 		btnNewButton = new RoundedButton("Log in",20, Color.WHITE);
@@ -158,7 +155,7 @@ public class LoginPage {
 		btnNewButton.setFocusPainted(false);
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setBackground(new Color(255,69,0));
-		btnNewButton.setBounds(126, 371, 106, 36);
+		btnNewButton.setBounds(111, 332, 106, 36);
 		panel.add(btnNewButton);
 		
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -181,8 +178,8 @@ public class LoginPage {
 			}
 		});
 		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setBounds(0, 0, 381, 548);
+		RoundedLabel lblNewLabel_2 = new RoundedLabel("", 30, new Color(15,164,149), Color.BLACK, 1);
+		lblNewLabel_2.setBounds(0, 0, 320, 452);
 		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_4 = new JLabel("");

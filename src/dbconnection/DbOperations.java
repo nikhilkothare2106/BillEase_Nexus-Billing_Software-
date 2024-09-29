@@ -294,4 +294,82 @@ public class DbOperations {
         }
         return status;
     }
+
+    public static ResultSet getCustomerData(String phone){
+        ResultSet rs = null;
+        try{
+            Connection connection = DbConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("select * from customer where Phone_No=?");
+            statement.setString(1, phone);
+
+            rs = statement.executeQuery();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public static boolean insertCustomerDetails(String phone,String name,String gender,String payment){
+        boolean status = false;
+        try{
+            Connection connection = DbConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("insert into customer values(?,?,?,?)");
+
+            statement.setString(1, phone);
+            statement.setString(2, name);
+            statement.setString(3, gender);
+            statement.setString(4, payment);
+
+            int i = statement.executeUpdate();
+            if(i > 0){
+                status = true;
+            }
+            
+        }
+        catch(Exception e){
+            e.printStackTrace();;
+        }
+        return status;
+    }
+
+    public static boolean insertShoppingDetails(String name,String phone,String items,String date,String time,String emp_email){
+        boolean status = false;
+        try{
+            Connection connection = DbConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("insert into shopping_details values(?,?,?,?,?,?)");
+
+            statement.setString(1, name);
+            statement.setString(2, phone);
+            statement.setString(3, items);
+            statement.setString(4, date);
+            statement.setString(5, time);
+            statement.setString(6, emp_email);
+
+            int i = statement.executeUpdate();
+            if(i > 0){
+                status = true;
+            }
+            
+        }
+        catch(Exception e){
+            e.printStackTrace();;
+        }
+        return status;
+    }
+
+    public static ResultSet getCustomerHistory(String phone){
+        ResultSet rs = null;
+        try{
+            Connection connection = DbConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("select * from shopping_details where Customer_Phone_No=?");
+            statement.setString(1, phone);
+
+            rs = statement.executeQuery();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return rs;
+    }
 }

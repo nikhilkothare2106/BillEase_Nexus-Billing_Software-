@@ -5,9 +5,6 @@ import java.awt.*;
 
 public class RoundedLabel extends JLabel {
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Color backgroundColor;
     private Color borderColor;

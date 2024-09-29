@@ -7,6 +7,8 @@ import javax.swing.table.*;
 import javax.swing.border.*;
 import userdefined.RoundedLabel;
 import dbconnection.DbOperations;
+import gettersetter.GetSetEmployee;
+
 import java.sql.ResultSet;
 
 public class ViewAllEmployee {
@@ -16,8 +18,10 @@ public class ViewAllEmployee {
 	private DefaultTableModel model;
 	private Object[] row;
 	private JScrollPane scrollPane;
+	private GetSetEmployee employee;
 	
-	public ViewAllEmployee() {
+	public ViewAllEmployee(GetSetEmployee employee) {
+		this.employee = employee;
 		initialize();
 		frame.setVisible(true);
 	}
@@ -36,7 +40,7 @@ public class ViewAllEmployee {
 		}
 	}
 	private void initialize() {
-		frame = new JFrame();
+		frame.setTitle("View Employees");
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
@@ -80,7 +84,7 @@ public class ViewAllEmployee {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel_9 = new JLabel("  Log out");
+		JLabel lblNewLabel_9 = new JLabel("Back");
 		lblNewLabel_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel_9.addMouseListener(new MouseAdapter() {
 			@Override
@@ -91,6 +95,11 @@ public class ViewAllEmployee {
 			public void mouseExited(MouseEvent e) {
 				lblNewLabel_9.setForeground(new Color(240, 0, 0));
 			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new EmployeePanel(employee);
+				frame.setVisible(false);
+			}
 		});
 		
 		JLabel lblNewLabel_5_1_1 = new JLabel("View Employees");
@@ -100,13 +109,14 @@ public class ViewAllEmployee {
 		panel.add(lblNewLabel_5_1_1);
 		lblNewLabel_9.setForeground(new Color(240, 0, 0));
 		lblNewLabel_9.setFont(new Font("Rockwell", Font.BOLD, 22));
-		lblNewLabel_9.setBounds(1198, 27, 108, 34);
+		lblNewLabel_9.setBounds(1251, 27, 70, 34);
 		panel.add(lblNewLabel_9);
 		
-		JLabel lblNewLabel_5_1 = new JLabel("Nikhil");
+		JLabel lblNewLabel_5_1 = new JLabel("");
+		lblNewLabel_5_1.setText(employee.getName());
 		lblNewLabel_5_1.setForeground(new Color(255, 255, 224));
 		lblNewLabel_5_1.setFont(new Font("Cooper Black", Font.BOLD, 24));
-		lblNewLabel_5_1.setBounds(182, 27, 99, 47);
+		lblNewLabel_5_1.setBounds(182, 27, 212, 47);
 		panel.add(lblNewLabel_5_1);
 		
 		JLabel lblNewLabel_5 = new JLabel("Welcome");
@@ -124,11 +134,11 @@ public class ViewAllEmployee {
 		JLabel lblNewLabel = new JLabel("Employee Details");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Rockwell", Font.BOLD, 22));
-		lblNewLabel.setBounds(663, 88, 191, 25);
+		lblNewLabel.setBounds(655, 87, 191, 25);
 		panel_1.add(lblNewLabel);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setViewportBorder(null);
+//		scrollPane.setViewportBorder(null);
 		scrollPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		scrollPane.setBackground(Color.BLACK);
 		scrollPane.setBounds(477, 133, 522, 25);

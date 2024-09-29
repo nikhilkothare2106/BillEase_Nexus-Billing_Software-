@@ -1,7 +1,5 @@
 package employee;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -55,6 +53,7 @@ public class MyProfile {
 		}
 	}
 	private void initialize() {
+		frame.setTitle("My Profile");
 		frame.setBounds(0, 0, 1380, 780);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -68,7 +67,7 @@ public class MyProfile {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel_9 = new JLabel("  Log out");
+		JLabel lblNewLabel_9 = new JLabel("Back");
 		lblNewLabel_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel_9.addMouseListener(new MouseAdapter() {
 			@Override
@@ -79,6 +78,11 @@ public class MyProfile {
 			public void mouseExited(MouseEvent e) {
 				lblNewLabel_9.setForeground(new Color(240, 0, 0));
 			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new EmployeePanel(employee);
+				frame.setVisible(false);
+			}
 		});
 		
 		JLabel lblNewLabel_5_1_1 = new JLabel("My Profile");
@@ -88,7 +92,7 @@ public class MyProfile {
 		panel.add(lblNewLabel_5_1_1);
 		lblNewLabel_9.setForeground(new Color(240, 0, 0));
 		lblNewLabel_9.setFont(new Font("Rockwell", Font.BOLD, 22));
-		lblNewLabel_9.setBounds(1198, 27, 108, 34);
+		lblNewLabel_9.setBounds(1238, 30, 70, 34);
 		panel.add(lblNewLabel_9);
 		
 		JLabel wel_name_label = new JLabel(employee.getName());

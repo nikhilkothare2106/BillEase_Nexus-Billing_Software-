@@ -3,6 +3,7 @@ package employee;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import billingSoftware.LoginPage;
 import gettersetter.GetSetEmployee;
 
 import javax.swing.JLabel;
@@ -13,20 +14,26 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.awt.Cursor;
 
 public class EmployeePanel {
 
 	private JFrame frame = new JFrame();
 	private GetSetEmployee employee;
+	@SuppressWarnings("rawtypes")
+	private HashMap<String,ArrayList> map;
 
 	public EmployeePanel(GetSetEmployee employee){
 		this.employee = employee;
+		map = new HashMap<>();
 		initialize();
 		frame.setVisible(true);
 	}
 
 	private void initialize() {
+		frame.setTitle("Employee Panel");
 		frame.setBounds(0, 0, 1000, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
@@ -40,6 +47,7 @@ public class EmployeePanel {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel_9 = new JLabel("  Log out");
+		lblNewLabel_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel_9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -48,6 +56,11 @@ public class EmployeePanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				lblNewLabel_9.setForeground(new Color(240, 0, 0));
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new LoginPage();
+				frame.setVisible(false);
 			}
 		});
 		
@@ -150,7 +163,7 @@ public class EmployeePanel {
 		lblNewLabel_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new ViewAllEmployee();
+				new ViewAllEmployee(employee);
 				frame.setVisible(false);
 			}
 		});
@@ -226,6 +239,13 @@ public class EmployeePanel {
 		panel_3_1_2.add(lblNewLabel_2_1_2);
 		
 		RoundedLabel lblNewLabel_1_1_2 = new RoundedLabel("", 30, new Color(72, 201, 176), Color.BLACK, 2);
+		lblNewLabel_1_1_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new StartBilling(employee,map);
+				frame.setVisible(false);
+			}
+		});
 		lblNewLabel_1_1_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel_1_1_2.setBounds(0, 0, 135, 138);
 		panel_3_1_2.add(lblNewLabel_1_1_2);

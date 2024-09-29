@@ -29,20 +29,6 @@ public class ViewEditEmployee {
 	private JScrollPane scrollPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewEditEmployee window = new ViewEditEmployee();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-
 	public ViewEditEmployee() {
 		initialize();
 		getEmployeeDetails();
@@ -101,6 +87,7 @@ public class ViewEditEmployee {
 		}
 	}
 	private void initialize() {
+		frame.setTitle("View/Edit Employee");
 		frame.setBounds(0, 0, 1380, 780);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
@@ -151,10 +138,33 @@ public class ViewEditEmployee {
 		panel_1.add(panel_4);
 		panel_4.setLayout(null);
 		
+		JLabel lblNewLabel_10_1 = new JLabel("Shopping History");
+		lblNewLabel_10_1.setForeground(Color.BLACK);
+		lblNewLabel_10_1.setFont(new Font("Rockwell", Font.BOLD, 14));
+		lblNewLabel_10_1.setBounds(76, 358, 120, 57);
+		panel_4.add(lblNewLabel_10_1);
+		
+		JLabel lblNewLabel_5_1_1_2_1_1 = new JLabel("");
+		lblNewLabel_5_1_1_2_1_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\shopping_history.png"));
+		lblNewLabel_5_1_1_2_1_1.setBounds(22, 360, 50, 57);
+		panel_4.add(lblNewLabel_5_1_1_2_1_1);
+		
+		RoundedLabel lblNewLabel_8_4_1 = new RoundedLabel("", 30, UIManager.getColor("Button.background"), Color.BLACK, 2);
+		lblNewLabel_8_4_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblNewLabel_8_4_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new ShoppingHistory();
+				frame.setVisible(false);
+			}
+		});
+		lblNewLabel_8_4_1.setBounds(10, 358, 208, 57);
+		panel_4.add(lblNewLabel_8_4_1);
+		
 		JLabel lblNewLabel_10 = new JLabel("Change Password");
 		lblNewLabel_10.setForeground(new Color(0, 0, 0));
 		lblNewLabel_10.setFont(new Font("Rockwell", Font.BOLD, 14));
-		lblNewLabel_10.setBounds(66, 358, 132, 57);
+		lblNewLabel_10.setBounds(70, 452, 132, 57);
 		lblNewLabel_10.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_10);
 		
@@ -185,7 +195,7 @@ public class ViewEditEmployee {
 		
 		JLabel lblNewLabel_5_1_1_2_1 = new JLabel("");
 		lblNewLabel_5_1_1_2_1.setIcon(new ImageIcon(ViewEditEmployee.class.getResource("/images/changepassword.png")));
-		lblNewLabel_5_1_1_2_1.setBounds(16, 358, 57, 57);
+		lblNewLabel_5_1_1_2_1.setBounds(16, 452, 57, 57);
 		lblNewLabel_5_1_1_2_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_5_1_1_2_1);
 		
@@ -230,7 +240,7 @@ public class ViewEditEmployee {
 			}
 		});
 		lblNewLabel_8_4.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		lblNewLabel_8_4.setBounds(10, 358, 208, 57);
+		lblNewLabel_8_4.setBounds(10, 452, 208, 57);
 		panel_4.add(lblNewLabel_8_4);
 		
 		RoundedLabel lblNewLabel_8_2 = new RoundedLabel("", 30, new Color(240,240,240), Color.BLACK, 2);
@@ -450,6 +460,7 @@ public class ViewEditEmployee {
 		scrollPane.setBounds(110, 108, 522, 31);
 		panel_2.add(scrollPane);
 		table = new JTable(model);
+		table.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		
 		table.addMouseListener(new MouseAdapter() {
 			@Override
@@ -478,16 +489,15 @@ public class ViewEditEmployee {
 				}
 			}
 		});
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setFont(new Font("Rockwell", Font.PLAIN, 14));
 		table.setRowHeight(25);
-		table.setCellSelectionEnabled(true);
+//		table.setCellSelectionEnabled(true);
 		table.getColumnModel().getColumn(0).setPreferredWidth(45);
 		table.getColumnModel().getColumn(1).setPreferredWidth(60);
 		table.getColumnModel().getColumn(2).setPreferredWidth(130);
 		table.getColumnModel().getColumn(3).setPreferredWidth(70);
 		table.getColumnModel().getColumn(4).setPreferredWidth(120);
-		table.setBorder(null);
+//		table.setBorder(null);
 		
 		table.setBackground(new Color(192, 192, 192));
 		scrollPane.setViewportView(table);

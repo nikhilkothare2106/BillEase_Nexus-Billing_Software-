@@ -21,6 +21,8 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 import java.awt.Cursor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ChangePasswordEmployee {
 
@@ -36,8 +38,8 @@ public class ChangePasswordEmployee {
 		frame.setVisible(true);
 	}
 
-
 	private void initialize() {
+		frame.setTitle("Change Password");
 		frame.setBounds(0, 0, 1380, 780);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
@@ -50,19 +52,36 @@ public class ChangePasswordEmployee {
 		panel.setBounds(0, 0, 1364, 100);
 		frame.getContentPane().add(panel);
 		
-		JLabel lblNewLabel_5_1_1 = new JLabel("My Profile");
+		JLabel lblNewLabel_5_1_1 = new JLabel("Change Password");
 		lblNewLabel_5_1_1.setForeground(new Color(255, 255, 224));
 		lblNewLabel_5_1_1.setFont(new Font("Cooper Black", Font.BOLD, 32));
-		lblNewLabel_5_1_1.setBounds(655, 24, 201, 47);
+		lblNewLabel_5_1_1.setBounds(655, 24, 347, 47);
 		panel.add(lblNewLabel_5_1_1);
 		
-		JLabel lblNewLabel_9 = new JLabel("  Log out");
+		JLabel lblNewLabel_9 = new JLabel("Back");
+		lblNewLabel_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblNewLabel_9.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new EmployeePanel(employee);
+				frame.setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_9.setForeground(Color.BLUE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_9.setForeground(Color.RED);
+			}
+		});
 		lblNewLabel_9.setForeground(new Color(240, 0, 0));
 		lblNewLabel_9.setFont(new Font("Rockwell", Font.BOLD, 22));
-		lblNewLabel_9.setBounds(1198, 27, 108, 34);
+		lblNewLabel_9.setBounds(1247, 30, 65, 34);
 		panel.add(lblNewLabel_9);
 		
 		JLabel wel_name_label = new JLabel((String) null);
+		wel_name_label.setText(employee.getName());
 		wel_name_label.setForeground(new Color(255, 255, 224));
 		wel_name_label.setFont(new Font("Cooper Black", Font.BOLD, 24));
 		wel_name_label.setBounds(182, 27, 201, 47);
@@ -104,6 +123,11 @@ public class ChangePasswordEmployee {
 		panel_1.add(panel_5);
 		
 		old_pwd = new JPasswordField();
+		old_pwd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new_pwd.requestFocus();
+			}
+		});
 		old_pwd.setForeground(Color.WHITE);
 		old_pwd.setCaretColor(Color.WHITE);
 		old_pwd.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
@@ -112,6 +136,11 @@ public class ChangePasswordEmployee {
 		panel_5.add(old_pwd);
 		
 		new_pwd = new JPasswordField();
+		new_pwd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				confirm_pwd.requestFocus();
+			}
+		});
 		new_pwd.setForeground(Color.WHITE);
 		new_pwd.setCaretColor(Color.WHITE);
 		new_pwd.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));
@@ -190,6 +219,11 @@ public class ChangePasswordEmployee {
 		panel_5.add(btn_change);
 		
 		confirm_pwd = new JPasswordField();
+		confirm_pwd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btn_change.doClick();;
+			}
+		});
 		confirm_pwd.setForeground(Color.WHITE);
 		confirm_pwd.setCaretColor(Color.WHITE);
 		confirm_pwd.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(255, 255, 255)));

@@ -12,20 +12,6 @@ public class AdminPanel {
 
 	private JFrame frame = new JFrame();
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AdminPanel window = new AdminPanel();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-
 	public AdminPanel() {
 		initialize();
 		frame.setVisible(true);
@@ -33,6 +19,7 @@ public class AdminPanel {
 
 
 	private void initialize() {
+		frame.setTitle("Admin Panel");
 		frame.setBounds(0, 0, 1380, 780);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
@@ -86,6 +73,31 @@ public class AdminPanel {
 		panel_1.add(panel_4);
 		panel_4.setLayout(null);
 		
+		JLabel lblNewLabel_10_1 = new JLabel("Shopping History");
+		lblNewLabel_10_1.setForeground(Color.BLACK);
+		lblNewLabel_10_1.setFont(new Font("Rockwell", Font.BOLD, 14));
+		lblNewLabel_10_1.setBounds(76, 359, 127, 57);
+		panel_4.add(lblNewLabel_10_1);
+		
+		JLabel lblNewLabel_5_1_1_2_1_1 = new JLabel("");
+		
+		lblNewLabel_5_1_1_2_1_1.setIcon(new ImageIcon("C:\\Users\\nikhil\\OneDrive\\Desktop\\New folder (5)\\src\\images\\shopping_history.png"));
+		lblNewLabel_5_1_1_2_1_1.setBounds(20, 362, 53, 57);
+		panel_4.add(lblNewLabel_5_1_1_2_1_1);
+		
+		RoundedLabel lblNewLabel_8_4_1 = new RoundedLabel("", 30, UIManager.getColor("Button.background"), Color.BLACK, 2);
+		lblNewLabel_8_4_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new ShoppingHistory();
+				frame.setVisible(false);
+			}
+		});
+		lblNewLabel_8_4_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
+		lblNewLabel_8_4_1.setBounds(10, 359, 208, 57);
+		panel_4.add(lblNewLabel_8_4_1);
+		
 		JLabel lblNewLabel_6 = new JLabel("Register Employee");
 		lblNewLabel_6.setForeground(new Color(0, 0, 0));
 		lblNewLabel_6.setFont(new Font("Rockwell", Font.BOLD, 14));
@@ -96,7 +108,7 @@ public class AdminPanel {
 		JLabel lblNewLabel_10 = new JLabel("Change Password");
 		lblNewLabel_10.setForeground(new Color(0, 0, 0));
 		lblNewLabel_10.setFont(new Font("Rockwell", Font.BOLD, 14));
-		lblNewLabel_10.setBounds(76, 358, 142, 57);
+		lblNewLabel_10.setBounds(76, 453, 142, 57);
 		lblNewLabel_10.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_10);
 		
@@ -127,7 +139,7 @@ public class AdminPanel {
 		
 		JLabel lblNewLabel_5_1_1_2_1 = new JLabel("");
 		lblNewLabel_5_1_1_2_1.setIcon(new ImageIcon(AdminPanel.class.getResource("/images/changepassword.png")));
-		lblNewLabel_5_1_1_2_1.setBounds(22, 358, 50, 57);
+		lblNewLabel_5_1_1_2_1.setBounds(22, 453, 50, 57);
 		lblNewLabel_5_1_1_2_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_4.add(lblNewLabel_5_1_1_2_1);
 		
@@ -178,7 +190,7 @@ public class AdminPanel {
 			}
 		});
 		lblNewLabel_8_4.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		lblNewLabel_8_4.setBounds(10, 358, 208, 57);
+		lblNewLabel_8_4.setBounds(10, 453, 208, 57);
 		panel_4.add(lblNewLabel_8_4);
 		
 		RoundedLabel lblNewLabel_8_2 = new RoundedLabel("", 30, new Color(240,240,240), Color.BLACK, 2);

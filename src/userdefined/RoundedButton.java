@@ -4,9 +4,7 @@ import java.awt.*;
 import javax.swing.border.Border;
 
 public class RoundedButton extends JButton {
-    /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private Border border;
 	private Color color;

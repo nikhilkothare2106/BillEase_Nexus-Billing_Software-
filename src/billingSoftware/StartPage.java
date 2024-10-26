@@ -13,9 +13,6 @@ public class StartPage {
 	JProgressBar progressBar;
 	JLabel lblNewLabel,lblNewLabel_2;
 
-	public static void main(String[] args) {
-		new StartPage();
-	}
 	public StartPage() {
 		initialize();
 		frame.setVisible(true);

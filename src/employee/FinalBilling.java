@@ -379,6 +379,11 @@ public class FinalBilling {
 		};
 		model = new DefaultTableModel(data,cols){
 			
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
             public boolean isCellEditable(int row, int column) {
                 return false;

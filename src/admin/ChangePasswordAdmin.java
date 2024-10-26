@@ -44,6 +44,14 @@ public class ChangePasswordAdmin {
 		JLabel lblNewLabel_9 = new JLabel("  Log out");
 		lblNewLabel_9.addMouseListener(new MouseAdapter() {
 			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_9.setForeground(new Color(0, 0, 240));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_9.setForeground(new Color(240, 0, 0));
+			}
+			@Override
 			public void mouseClicked(MouseEvent e) {
 				new LoginPage();
 				frame.setVisible(false);

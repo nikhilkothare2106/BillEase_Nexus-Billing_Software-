@@ -6,6 +6,7 @@ import java.awt.event.*;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
+import billingSoftware.LoginPage;
 import userdefined.RoundedLabel;
 
 public class AdminPanel {
@@ -41,6 +42,11 @@ public class AdminPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				lblNewLabel_9.setForeground(new Color(240, 0, 0));
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new LoginPage();
+				frame.setVisible(false);
 			}
 		});
 		lblNewLabel_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

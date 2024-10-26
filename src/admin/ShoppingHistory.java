@@ -10,6 +10,7 @@ import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import billingSoftware.LoginPage;
 import dbconnection.DbOperations;
 import userdefined.RoundedLabel;
 
@@ -65,6 +66,11 @@ public class ShoppingHistory {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				lblNewLabel_9.setForeground(new Color(240, 0, 0));
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new LoginPage();
+				frame.setVisible(false);
 			}
 		});
 		lblNewLabel_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
